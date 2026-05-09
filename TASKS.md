@@ -1,7 +1,7 @@
 # Plano de Tarefas (TASKS.md)
 
 ## Fase 1: Configuração do Projeto e Infraestrutura
-- [ ] **T1.1:** Inicializar o projeto em React Native (com Expo ou Bare Workflow).
+- [x] **T1.1:** Inicializar o projeto em React Native (com Expo ou Bare Workflow).
 - [ ] **T1.2:** Configurar navegação base com `react-navigation`.
 - [ ] **T1.3:** Instalar e configurar biblioteca do SQLite (`expo-sqlite` ou `react-native-sqlite-storage`).
 - [ ] **T1.4:** Criar estrutura de pastas do projeto (ex: `/src/components`, `/src/screens`, `/src/database`, `/src/utils`).

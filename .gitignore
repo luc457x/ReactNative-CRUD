@@ -1,39 +1,55 @@
+# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+
+# dependencies
 node_modules/
+
+# Expo
 .expo/
 dist/
-npm-debug.*
+web-build/
+expo-env.d.ts
+
+# Native
+.kotlin/
+*.orig.*
 *.jks
 *.p8
 *.p12
 *.key
 *.mobileprovision
-*.orig.*
-veda
-web-build/
+
+# Metro
+.metro-health-check*
+
+# debug
+npm-debug.*
+yarn-debug.*
+yarn-error.*
 
 # macOS
 .DS_Store
+*.pem
 
-# iOS
-ios/build/
-ios/Pods/
-ios/.symlinks/
-ios/Podfile.lock
+# local env files
+.env
+.env*.local
 
-# Android
-android/build/
-android/.gradle/
-android/app/build/
-android/app/build/outputs/
-android/.idea/
-android/*.iml
-android/local.properties
-
-# Banco de dados local (se for gerar algum arquivo .db fora do padrão embutido do expo, ignorar, mas o expo-sqlite gerencia no device. Se por acaso houver dump local)
+# SQLite databases (local, não versionar dados)
 *.db
 *.sqlite
 *.sqlite3
 
-# Env
-.env
-.env.local
+# IDEs
+.idea/
+.vscode/
+*.iml
+
+# Expo web build legacy
+web-build/
+
+# typescript
+*.tsbuildinfo
+
+# generated native folders
+/ios
+/android

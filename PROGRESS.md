@@ -1,8 +1,8 @@
 # Registro de Progresso (PROGRESS.md)
 
 ## Resumo do Status Atual
-* **Fase Atual:** Fase 0 (Planejamento) Concluída. Prontos para iniciar a Fase 1.
-* **Último Commit/Atualização:** Criação de .gitignore customizado, inicialização do Git, SKILLS.md e sumário no AGENTS.md.
+* **Fase Atual:** Fase 1 em andamento — T1.1 concluída. Próximo passo: T1.2 (react-navigation) e T1.3 (expo-sqlite).
+* **Último Commit/Atualização:** Inicialização do projeto Expo (T1.1) + estrutura de pastas src/.
 
 ---
 
@@ -23,3 +23,21 @@
   * O usuário Admin deve passar pelo fluxo normal de login, validando-se no banco local.
 * **Pendências (Bugs / Known Issues):**
   * Nenhuma no momento. A Fase 0 está concluída com excelência. Prontos para a tarefa T1.1.
+
+---
+
+### Sessão 1: Inicialização do Projeto Expo (T1.1)
+* **Data:** 09 de Maio de 2026
+* **Agente:** Arquiteto Sênior
+* **Tarefas Concluídas:** T1.1
+* **Resumo das Ações:**
+  * Executado `npx create-expo-app@latest` com template `blank` (JavaScript puro, conforme RNF01).
+  * Corrigido `app.json`: nome do app ajustado para `EstoqueApp`, slug para `estoque-app`.
+  * `.gitignore` enriquecido com entradas do projeto original (SQLite `*.db/*.sqlite`, IDEs `.idea/.vscode`, `.env`).
+  * Criada estrutura de pastas `src/` com subdiretórios: `components/`, `screens/`, `database/`, `utils/`.
+  * Validação: Metro Bundler subiu em `http://localhost:8081` sem erros de compilação.
+* **Decisões Arquiteturais Tomadas:**
+  * Expo **Managed Workflow** escolhido (template `blank`) — facilita builds cross-platform sem ejection necessário para o escopo atual.
+  * `newArchEnabled: true` mantido no `app.json` (nova arquitetura React Native habilitada por padrão no Expo SDK mais recente — melhor performance).
+* **Pendências (Bugs / Known Issues):**
+  * Nenhuma. Pronto para T1.2 (react-navigation) e T1.3 (expo-sqlite).
