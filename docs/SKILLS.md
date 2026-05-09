@@ -9,7 +9,7 @@ No início de qualquer fase de fundação de um projeto, logo após a fase de pl
 Garantir que o versionamento e a blindagem de arquivos sejam feitos de forma inteligente e adaptada ao stack tecnológico definido na documentação, antes de começar a escrever código.
 
 **Passo a passo que a IA deve executar:**
-1. **Ler o Contexto:** Ler os arquivos `SPEC.md` e `HARNESS.md` para identificar todas as tecnologias do projeto (ex: React Native, Expo, SQLite, Python, Node, etc.).
+1. **Ler o Contexto:** Ler os arquivos `SPEC.md` e `HARNESS.md` (ambos em `docs/`) para identificar todas as tecnologias do projeto (ex: React Native, Expo, SQLite, Python, Node, etc.).
 2. **Criar o `.gitignore` Personalizado:** Gerar um `.gitignore` robusto que exclua:
     - Pastas padrão de dependências (`node_modules/`, `venv/`, etc).
     - Diretórios de build/compilação (`dist/`, `build/`, `android/`, `ios/`, etc).

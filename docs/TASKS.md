@@ -33,4 +33,4 @@
 ## Fase 6: Ajustes Finais e UX (Ref: RNF03)
 - [ ] **T6.1:** Refinar o estilo para garantir responsividade (celulares e tablets).
 - [ ] **T6.2:** Testes de fluxo offline e persistência.
-- [ ] **T6.3:** Validação final cruzada com `SPEC.md` e `use_case.puml`.
+- [ ] **T6.3:** Validação final cruzada com `SPEC.md` e `UML/use_case.puml`.
