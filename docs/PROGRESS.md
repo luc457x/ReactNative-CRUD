@@ -81,4 +81,25 @@
   * Checado o fluxo de negócio (banco instanciado).
   * **Correção de Build Web:** Durante a validação de compilação web (`npx expo export -p web`), o módulo `expo-sqlite` falhou por não conseguir resolver arquivos `.wasm` nativos da dependência no navegador. Para corrigir isso e manter o ambiente de desenvolvimento funcionando também na web, foi criado um `metro.config.js` adicionando `wasm` aos `assetExts` do bundler.
 * **Pendências:** 
-  * T2.2 (Repositório CRUD para Usuários).
+---
+
+### Sessão 3: Refinamento de Workflow (Documentação)
+* **Data:** 09 de Maio de 2026
+* **Resumo das Ações:**
+  * Atualização do `docs/WORKFLOW.md` para incluir a regra de **Comunicação Explicativa**. Agora a IA deve declarar explicitamente quando está consultando diretrizes de workflow, assumindo personas ou realizando validações.
+  * Reestruturação do `docs/HARNESS.md` e `docs/WORKFLOW.md`:
+    * `HARNESS.md` agora foca exclusivamente em **Critérios Técnicos** (Build, Limpeza, Responsividade, Padrões de Código).
+    * `WORKFLOW.md` agora centraliza o **Protocolo de Conclusão de Tarefa**, focando em garantir que o código **respeite as especificações** técnicas e de negócio pertinentes.
+* **Pendências:** 
+---
+
+### Sessão 4: Padronização de Commits (Regras de Workflow)
+* **Data:** 09 de Maio de 2026
+* **Resumo das Ações:**
+  * Inclusão do **Protocolo de Commit e Granularidade** no `docs/WORKFLOW.md`.
+  * Definição da obrigatoriedade de **Commits Atômicos** (separação de alterações em funcionalidades existentes vs. novas implementações).
+  * Padronização das mensagens de commit (assunto informativo de ~50 caracteres).
+* **Decisões Arquiteturais Tomadas:**
+  * Adoção de uma política de Git mais rigorosa para facilitar o rastreamento de mudanças e auditoria de código, especialmente em fluxos de trabalho colaborativos assistidos por IA.
+* **Pendências:** 
+  * Retomar a Fase 2 (T2.2 — Repositório CRUD para Usuários).

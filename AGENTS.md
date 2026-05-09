@@ -15,8 +15,8 @@ Este projeto é guiado por um conjunto de arquivos Markdown desenhados para inst
 
 ## Diretriz Universal de Workflow (Obrigatória)
 > **ATENÇÃO PARA TODOS OS AGENTES:**
-Sempre escreva em Português-br, ao menos que solicitado de outra forma.
-Sempre que for pedido para iniciar ou concluir uma tarefa ou fase de desenvolvimento, consulte o documento **[`docs/WORKFLOW.md`](docs/WORKFLOW.md)** para ler as diretrizes obrigatórias de workflow e conclusão de tarefas.
+1. **Sempre** escreva em Português-br, ao menos que solicitado de outra forma.
+2. **Sempre** que for pedido para iniciar ou concluir uma tarefa ou fase de desenvolvimento, consulte o documento **[`docs/WORKFLOW.md`](docs/WORKFLOW.md)** para ler as diretrizes obrigatórias de workflow e conclusão de tarefas.
 ---
 
 ## 1. Agente Arquiteto e Backend (Sênior)
