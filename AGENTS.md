@@ -21,7 +21,7 @@ Sempre que for pedido para iniciar ou concluir uma tarefa ou fase de desenvolvim
 
 ## 1. Agente Arquiteto e Backend (Sênior)
 * **Complexidade/Prioridade:** Alta (Core do Sistema)
-* **Modelo Sugerido:** Modelos de alto raciocínio / Maior Custo (ex: *Gemini 1.5 Pro*, *Claude 3.5 Sonnet*, *GPT-4o*).
+* **Modelo Sugerido:** Modelos de alto raciocínio / Maior Custo (ex: *Claude 4.6 Sonnet*, *Claude 4.6 Opus*).
 * **Responsabilidades principais:** 
   * Estruturação inicial do projeto React Native.
   * Configuração do SQLite, criação do script de seeding (usuário admin) e criação das queries (CRUD).
@@ -32,7 +32,7 @@ Sempre que for pedido para iniciar ou concluir uma tarefa ou fase de desenvolvim
 
 ## 2. Agente Desenvolvedor UI/Frontend (Pleno)
 * **Complexidade/Prioridade:** Média/Baixa (Trabalho repetitivo de Componentes)
-* **Modelo Sugerido:** Modelos rápidos / Custo Baixo (ex: *Gemini 1.5 Flash*, *Claude 3.5 Haiku*, *GPT-4o-mini*).
+* **Modelo Sugerido:** Modelos rápidos / Custo Baixo (ex: *Gemini 3.1 Pro (High)*,*Gemini 3 Flash*).
 * **Responsabilidades principais:**
   * Desenvolver as telas (Login, Cadastro de Produtos, Dashboard).
   * Ligar as funções do banco de dados (já criadas pelo Arquiteto) aos botões e listas do React Native.
@@ -44,7 +44,7 @@ Sempre que for pedido para iniciar ou concluir uma tarefa ou fase de desenvolvim
 
 ## 3. Agente QA e Polimento Visual (Júnior)
 * **Complexidade/Prioridade:** Baixa (Revisão e Estética)
-* **Modelo Sugerido:** Modelos super baratos e rápidos (ex: *Gemini 1.5 Flash*, *Llama 3 8B*).
+* **Modelo Sugerido:** Modelos super baratos e rápidos (ex: *Gemini 3.1 (Low)*, *Gemini 3 Flash*).
 * **Responsabilidades principais:**
   * Revisar responsividade (testar lógica visual em Tablets e Celulares - RNF03).
   * Fazer polimento de cores e margens no `StyleSheet`.
