@@ -1,7 +1,9 @@
+import { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { initDatabase } from './src/database/database';
 
 // --- Tela Placeholder (será substituída nas Fases 3-5) ---
 function PlaceholderScreen() {
@@ -19,6 +21,20 @@ function PlaceholderScreen() {
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  const [dbInitialized, setDbInitialized] = useState(false);
+
+  useEffect(() => {
+    async function setup() {
+      await initDatabase();
+      setDbInitialized(true);
+    }
+    setup();
+  }, []);
+
+  if (!dbInitialized) {
+    return null;
+  }
+
   return (
     <NavigationContainer>
       <Stack.Navigator

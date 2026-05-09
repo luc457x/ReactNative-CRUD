@@ -13,6 +13,10 @@ Este projeto é guiado por um conjunto de arquivos Markdown desenhados para inst
 * **[`docs/SKILLS.md`](docs/SKILLS.md)**: O livro de feitiços. Mapeia processos padrões passo a passo para que as IAs executem tarefas repetitivas (como inicialização ou deploys) sempre da mesma forma.
 * **[`docs/UML/`](docs/UML/)**: Diagramas PlantUML do projeto (`use_case.puml`, `class.puml`).
 
+## Diretriz Universal de Workflow (Obrigatória)
+> **ATENÇÃO PARA TODOS OS AGENTES:**
+> Antes de concluir qualquer tarefa e atualizar o `TASKS.md`, você **DEVE OBRIGATORIAMENTE** seguir o Processo de Validação detalhado na seção 2 do **[`docs/HARNESS.md`](docs/HARNESS.md)**.
+Ignorar essa regra causará regressões no projeto.
 ---
 
 ## 1. Agente Arquiteto e Backend (Sênior)
@@ -47,3 +51,4 @@ Este projeto é guiado por um conjunto de arquivos Markdown desenhados para inst
   * Realizar check-list final verificando se não faltou nenhum item do `docs/SPEC.md`.
 * **Foco no [`docs/TASKS.md`](docs/TASKS.md):**
   * **Fase 6** (Ajustes Finais e UX)
+

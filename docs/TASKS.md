@@ -7,8 +7,8 @@
 - [x] **T1.4:** Criar estrutura de pastas do projeto (ex: `/src/components`, `/src/screens`, `/src/database`, `/src/utils`).
 
 ## Fase 2: Banco de Dados e Modelagem (Ref: RNF02, Diagrama de Classes)
-- [ ] **T2.1:** Criar script de inicialização do banco de dados (tabelas `Usuarios` e `Produtos`).
-  - [ ] **T2.1.1:** Criar usuário `admin` padrão no SQLite (seed) caso a tabela esteja vazia. A senha será `admin` e ele terá permissão de `admin`, para ser autenticado normalmente pelo app.
+- [x] **T2.1:** Criar script de inicialização do banco de dados (tabelas `Usuarios` e `Produtos`).
+  - [x] **T2.1.1:** Criar usuário `admin` padrão no SQLite (seed) caso a tabela esteja vazia. A senha será `admin` e ele terá permissão de `admin`, para ser autenticado normalmente pelo app.
 - [ ] **T2.2:** Implementar repositório (CRUD) para Usuários.
 - [ ] **T2.3:** Implementar repositório (CRUD) para Produtos.
 - [ ] **T2.4:** Implementar regras de negócio no nível de dados:

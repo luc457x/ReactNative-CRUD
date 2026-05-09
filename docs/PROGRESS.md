@@ -61,3 +61,24 @@
   * `headerShown: false` no Stack raiz — todas as telas implementarão seus próprios headers customizados para consistência visual.
 * **Pendências (Bugs / Known Issues):**
   * Nenhuma. **Fase 1 concluída.** Prontos para iniciar a Fase 2 (T2.1 — criação das tabelas SQLite + seed do admin).
+
+---
+
+### Sessão 2: Banco de Dados Inicial (T2.1)
+* **Data:** 08 de Maio de 2026
+* **Agente:** Arquiteto Sênior
+* **Tarefas Concluídas:** T2.1, T2.1.1
+
+#### T2.1 — Script de Inicialização
+  * Criada a função `initDatabase` em `src/database/database.js`.
+  * Configurada a criação das tabelas `Usuarios` (id, nome, senha, permissao) e `Produtos` (id, nome, categoria, quantidade, precoUnitario, dataValidade).
+
+#### T2.1.1 — Usuário Admin
+  * Adicionada regra de seed: se a tabela `Usuarios` estiver vazia, injetamos automaticamente um usuário admin.
+  * O `App.js` foi refatorado para utilizar o `useEffect` e aguardar o `initDatabase()` antes de renderizar a navegação.
+
+* **Validação:** 
+  * Checado o fluxo de negócio (banco instanciado).
+  * **Correção de Build Web:** Durante a validação de compilação web (`npx expo export -p web`), o módulo `expo-sqlite` falhou por não conseguir resolver arquivos `.wasm` nativos da dependência no navegador. Para corrigir isso e manter o ambiente de desenvolvimento funcionando também na web, foi criado um `metro.config.js` adicionando `wasm` aos `assetExts` do bundler.
+* **Pendências:** 
+  * T2.2 (Repositório CRUD para Usuários).
