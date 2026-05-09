@@ -1,0 +1,39 @@
+node_modules/
+.expo/
+dist/
+npm-debug.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+veda
+web-build/
+
+# macOS
+.DS_Store
+
+# iOS
+ios/build/
+ios/Pods/
+ios/.symlinks/
+ios/Podfile.lock
+
+# Android
+android/build/
+android/.gradle/
+android/app/build/
+android/app/build/outputs/
+android/.idea/
+android/*.iml
+android/local.properties
+
+# Banco de dados local (se for gerar algum arquivo .db fora do padrão embutido do expo, ignorar, mas o expo-sqlite gerencia no device. Se por acaso houver dump local)
+*.db
+*.sqlite
+*.sqlite3
+
+# Env
+.env
+.env.local

@@ -1,0 +1,36 @@
+@startuml
+left to right direction
+actor "Usuário" as Usuario
+
+rectangle "Sistema de Login" {
+  usecase "Login" as UC_Login
+  usecase "Logout" as UC_Logout
+}
+
+rectangle "Produto" {
+  usecase "Cadastrar Produto" as UC_Cadastrar
+  usecase "Excluir Produto" as UC_Excluir
+  usecase "Atualizar Produto" as UC_Atualizar
+  usecase "Aumentar Quantidade" as UC_Aumentar
+  usecase "Reduzir Quantidade" as UC_Reduzir
+}
+
+rectangle "Estoque" {
+  usecase "Listar Estoque" as UC_ListarEstoque
+  usecase "Buscar Produto" as UC_BuscarProduto
+  usecase "Listar Produtos por Categoria" as UC_ListarCategoria
+}
+
+Usuario --> UC_Login
+Usuario --> UC_Cadastrar
+Usuario --> UC_ListarEstoque
+
+UC_Login .down.> UC_Logout : <<extend>>
+UC_Cadastrar .down.> UC_Atualizar : <<extend>>
+UC_Cadastrar .down.> UC_Excluir : <<extend>>
+UC_Cadastrar .down.> UC_Aumentar : <<extend>>
+UC_Cadastrar .down.> UC_Reduzir : <<extend>>
+UC_ListarEstoque .down.> UC_BuscarProduto : <<extend>>
+UC_ListarEstoque .down.> UC_ListarCategoria : <<extend>>
+
+@enduml

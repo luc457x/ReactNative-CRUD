@@ -1,0 +1,49 @@
+@startuml
+class Usuario {
+  - id: int
+  - nome: string
+  - senha: string
+  + login()
+  + logout()
+}
+
+class Produto {
+  - id: int
+  - nome: string
+  - categoria: string
+  - quantidade: int
+  - precoUnitario: float
+  - dataValidade: date
+  + adicionar()
+  + excluir()
+  + atualizar()
+  + aumentarQtd()
+  + reduzirQtd()
+}
+
+class Categoria {
+  - id: int
+  - nome: string
+  + listarProdutos()
+}
+
+class Estoque {
+  - produtos: List<Produto>
+  + listarEstoque()
+  + buscarProduto()
+}
+
+class SistemaLogin {
+  - usuarios: List<Usuario>
+  + autenticar()
+}
+
+' Relacionamentos com multiplicidade
+Usuario --> Estoque : acessa
+Usuario "1" --> "1" SistemaLogin : autentica
+SistemaLogin "1" o-- "0..*" Usuario
+Produto "1" --> "1" Categoria : pertence
+Categoria "1" o-- "0..*" Produto : agrupa
+Estoque "1" o-- "1..*" Categoria : organiza
+Estoque "1" *-- "1..*" Produto : contém
+@enduml

@@ -1,0 +1,9 @@
+node_modules/
+.expo/
+ios/
+android/
+package-lock.json
+yarn.lock
+npm-debug.log*
+*.log
+.DS_Store
