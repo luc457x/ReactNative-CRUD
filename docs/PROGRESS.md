@@ -132,8 +132,8 @@
 ### Sessão 7: Documentação de Skills (SKILLS.md)
 * **Data:** 09 de Maio de 2026
 * **Resumo das Ações:**
-  * Criação da **Skill 2** (`atomic_commit_win`) no `docs/SKILLS.md`.
-  * Objetivo: Padronizar o comando de commit encadeado usando `;` para compatibilidade com PowerShell/Windows e garantir o uso de Português-br nas mensagens.
+  * Criação da **Skill 2** para `atomic_commit_cross`.
+  * Objetivo: Padronizar o comando de commit encadeado usando `&&` para compatibilidade com PowerShell/Windows/Linux e garantir o uso de Português-br nas mensagens.
 * **Validação:**
   * Comando testado e funcional nas sessões anteriores.
 * **Pendências:**
