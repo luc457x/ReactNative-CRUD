@@ -15,7 +15,7 @@ Este projeto é guiado por um conjunto de arquivos Markdown desenhados para inst
 
 ## Diretriz Universal de Workflow (Obrigatória)
 > **ATENÇÃO PARA TODOS OS AGENTES:**
-1. **Sempre** escreva em Português-br, ao menos que solicitado de outra forma.
+1. **Sempre** escreva em Português-br (incluindo commits e logs), a menos que solicitado de outra forma. Seja o mais **conciso** possível para economizar tokens.
 2. **Sempre** que for pedido para iniciar ou concluir uma tarefa ou fase de desenvolvimento, consulte o documento **[`docs/WORKFLOW.md`](docs/WORKFLOW.md)** para ler as diretrizes obrigatórias de workflow e conclusão de tarefas.
 ---
 

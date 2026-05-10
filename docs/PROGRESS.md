@@ -115,3 +115,14 @@
   * O arquivo `.agentignore` agora reflete os padrões de exclusão recomendados para projetos React Native assistidos por agentes.
 * **Pendências:**
   * Retomar a Fase 2 (T2.2 — Repositório CRUD para Usuários).
+
+---
+
+### Sessão 6: Ajuste de Diretrizes IA (AGENTS.md)
+* **Data:** 09 de Maio de 2026
+* **Resumo das Ações:**
+  * Atualização da Diretriz Universal no `AGENTS.md` para forçar Português-br em todas as interações (incluindo commits) e exigir concisão extrema.
+* **Validação:**
+  * Regra aplicada e já utilizada no próximo commit.
+* **Pendências:**
+  * Retomar a Fase 2 (T2.2).
