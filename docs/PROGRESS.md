@@ -126,3 +126,15 @@
   * Regra aplicada e já utilizada no próximo commit.
 * **Pendências:**
   * Retomar a Fase 2 (T2.2).
+
+---
+
+### Sessão 7: Documentação de Skills (SKILLS.md)
+* **Data:** 09 de Maio de 2026
+* **Resumo das Ações:**
+  * Criação da **Skill 2** (`atomic_commit_win`) no `docs/SKILLS.md`.
+  * Objetivo: Padronizar o comando de commit encadeado usando `;` para compatibilidade com PowerShell/Windows e garantir o uso de Português-br nas mensagens.
+* **Validação:**
+  * Comando testado e funcional nas sessões anteriores.
+* **Pendências:**
+  * Retomar a Fase 2 (T2.2).
