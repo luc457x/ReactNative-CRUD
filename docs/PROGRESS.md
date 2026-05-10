@@ -103,3 +103,15 @@
   * Adoção de uma política de Git mais rigorosa para facilitar o rastreamento de mudanças e auditoria de código, especialmente em fluxos de trabalho colaborativos assistidos por IA.
 * **Pendências:** 
   * Retomar a Fase 2 (T2.2 — Repositório CRUD para Usuários).
+
+---
+
+### Sessão 5: Manutenção de Ambiente (Otimização IA)
+* **Data:** 09 de Maio de 2026
+* **Resumo das Ações:**
+  * Atualização do `.agentignore` para incluir `.git/`, `dist/` e extensões de banco de dados (`.db`, `.sqlite`).
+  * Objetivo: Melhorar a performance de leitura da IA e economizar tokens de contexto, evitando a varredura de metadados do Git e binários de build.
+* **Validação:**
+  * O arquivo `.agentignore` agora reflete os padrões de exclusão recomendados para projetos React Native assistidos por agentes.
+* **Pendências:**
+  * Retomar a Fase 2 (T2.2 — Repositório CRUD para Usuários).
