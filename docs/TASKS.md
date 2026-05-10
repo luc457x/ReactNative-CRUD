@@ -9,11 +9,11 @@
 ## Fase 2: Banco de Dados e Modelagem (Ref: RNF02, Diagrama de Classes)
 - [x] **T2.1:** Criar script de inicialização do banco de dados (tabelas `Usuarios` e `Produtos`).
   - [x] **T2.1.1:** Criar usuário `admin` padrão no SQLite (seed) caso a tabela esteja vazia. A senha será `admin` e ele terá permissão de `admin`, para ser autenticado normalmente pelo app.
-- [ ] **T2.2:** Implementar repositório (CRUD) para Usuários.
-- [ ] **T2.3:** Implementar repositório (CRUD) para Produtos.
-- [ ] **T2.4:** Implementar regras de negócio no nível de dados:
-  - [ ] Garantir ID único (Auto-increment/UUID).
-  - [ ] Permitir a inserção de produtos com o mesmo nome como entradas separadas no banco, desde que tenham validades diferentes.
+- [x] **T2.2:** Implementar repositório (CRUD) para Usuários.
+- [x] **T2.3:** Implementar repositório (CRUD) para Produtos.
+- [x] **T2.4:** Implementar regras de negócio no nível de dados:
+  - [x] Garantir ID único (Auto-increment/UUID).
+  - [x] Permitir a inserção de produtos com o mesmo nome como entradas separadas no banco, desde que tenham validades diferentes.
 
 ## Fase 3: Telas de Acesso e Usuários
 - [ ] **T3.1:** Desenvolver Tela de Login (Ref: RF01).

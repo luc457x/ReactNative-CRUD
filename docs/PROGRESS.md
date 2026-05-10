@@ -1,8 +1,8 @@
 # Registro de Progresso (PROGRESS.md)
 
 ## Resumo do Status Atual
-* **Fase Atual:** **Fase 1 CONCLUÍDA** ✅ — Toda a infraestrutura base está pronta. Próximo passo: Fase 2 (Banco de Dados).
-* **Último Commit/Atualização:** T1.2 + T1.3 + T1.4 — react-navigation, expo-sqlite e estrutura src/ finalizados.
+* **Fase Atual:** **Fase 2 CONCLUÍDA** ✅ — Toda a infraestrutura e os repositórios (CRUD) do banco de dados estão prontos. Próximo passo: Fase 3 (Telas de Acesso e Usuários).
+* **Último Commit/Atualização:** T2.2 + T2.3 + T2.4 — UserRepository e ProductRepository implementados com sucesso usando expo-sqlite síncrono.
 
 ---
 
@@ -137,4 +137,17 @@
 * **Validação:**
   * Comando testado e funcional nas sessões anteriores.
 * **Pendências:**
-  * Retomar a Fase 2 (T2.2).
+  * Iniciar a Fase 3 (T3.1 - Tela de Login).
+
+---
+
+### Sessão 8: Finalização da Fase 2 (CRUDs)
+* **Data:** 10 de Maio de 2026
+* **Resumo das Ações:**
+  * Conclusão da Fase 2 (`T2.2`, `T2.3`, `T2.4`) com a criação dos repositórios de acesso a dados.
+  * Criação do `UserRepository.js` para gerenciar usuários (operações de CRUD e login).
+  * Criação do `ProductRepository.js` para gerenciar produtos, incluindo a validação lógica de permitir múltiplas entradas com o mesmo nome para validades diferentes, e métodos auxiliares para incrementar/decrementar quantidade.
+* **Validação:**
+  * Códigos implementados seguindo a API assíncrona/síncrona moderna do `expo-sqlite` (métodos `runAsync`, `getAllAsync`, `getFirstAsync`).
+* **Pendências:**
+  * Iniciar a Fase 3 (T3.1 - Tela de Login).
