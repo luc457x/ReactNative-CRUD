@@ -13,7 +13,7 @@
 - [ ] **T2.3:** Implementar repositório (CRUD) para Produtos.
 - [ ] **T2.4:** Implementar regras de negócio no nível de dados:
   - [ ] Garantir ID único (Auto-increment/UUID).
-  - [ ] Validar produtos com mesmo nome mas validades diferentes (Ref: Regras de Negócio).
+  - [ ] Permitir a inserção de produtos com o mesmo nome como entradas separadas no banco, desde que tenham validades diferentes.
 
 ## Fase 3: Telas de Acesso e Usuários
 - [ ] **T3.1:** Desenvolver Tela de Login (Ref: RF01).
@@ -26,7 +26,8 @@
 - [ ] **T4.3:** Integrar exclusão de Produto.
 
 ## Fase 5: Visão Geral e Controle de Estoque (Ref: RF03, RF04)
-- [ ] **T5.1:** Desenvolver Tela Principal (Dashboard) com listagem dos produtos em estoque.
+- [ ] **T5.1:** Desenvolver Tela Principal (Dashboard) com listagem simples dos produtos em estoque (agrupando itens pelo nome, mostrando apenas nome, categoria, preço e quantidade total).
+  - [ ] **T5.1.1:** Ao clicar em um produto agrupado, exibir uma tela com mais detalhes mostrando as diferentes entradas desse mesmo produto separadamente e mostrando os dados completos.
 - [ ] **T5.2:** Implementar botões de incremento (+) e decremento (-) diretamente na listagem ou painel rápido.
 - [ ] **T5.3:** Conectar a listagem ao banco para refletir as alterações "imediatamente" (Ref: Regra de Negócio).
 
