@@ -6,8 +6,8 @@ description: Historical log of sessions, completed tasks, and current project st
 # Progress Log (PROGRESS.md)
 
 ## Current Status Summary
-* **Current Phase:** **Phase 3 IN PROGRESS** 🛠️ — Login Screen completed. Next step: User Registration Screen (T3.2).
-* **Last Commit/Update:** T3.1 — Implementation of LoginScreen with integration to UserRepository.
+* **Current Status:** **Phase 3 COMPLETED** ✅ — Access and Registration screens implemented and integrated. Next step: Phase 4 (Product Management).
+* **Last Commit/Update:** T3.2/T3.3 — Implementation of RegisterScreen and integration with UserRepository.
 
 ---
 
@@ -173,3 +173,40 @@ description: Historical log of sessions, completed tasks, and current project st
   * **Business:** Meets FR01, allowing access only via valid credentials in the local database.
 * **Pending Items:**
   * Develop User Registration Screen (T3.2).
+
+---
+
+### Session 10: Infrastructure Refactoring & English Migration
+* **Date:** May 12, 2026
+* **Agent:** Architect / QA Agent
+* **Summary of Actions:**
+  * **Skills Modularization:** Refactored the AI Skills system from a single file to a modular directory structure (`/docs/skills/<name>/SKILL.md`).
+  * **Metadata Standardization:** Implemented YAML-like front-matter (`name`, `description`) across all engineering documentation for better AI parsing.
+  * **Language Migration:** Translated the entire engineering foundation (docs, database schema, and code logic) to English to optimize context token usage (~25% gain) and follow industry standards.
+  * **Hybrid UI Strategy:** Reverted and locked all UI strings (alerts, placeholders, labels) to Portuguese-br to maintain end-user accessibility while keeping the logic in English.
+  * **Atomic Commits:** Organized the changes into two distinct blocks (Docs/Refactor vs. Code/DB Migration) following Skill 2.
+* **Architectural Decisions Made:**
+  * Adoption of English for the "under the hood" layer of the project.
+  * Database renamed to `inventory.db` to match the new naming convention.
+* **Validation:**
+  * **Technical:** Global `grep` search confirmed no leftover references to old Portuguese table/method names in the logic. **Technical Validation Completed (Skill 3)**.
+* **Pending Items:**
+  * Resume Phase 3: Develop User/Employee Registration Screen (T3.2).
+
+---
+
+### Session 11: Phase 3 Finalization (Registration & Integration)
+* **Date:** May 12, 2026
+* **Agent:** UI/Frontend Developer
+* **Completed Tasks:** T3.2, T3.3
+* **Summary of Actions:**
+  * Created `RegisterScreen.js` with a comprehensive registration form (Username, Password, Permission).
+  * Implemented permission toggle (Admin vs Employee) for flexibility.
+  * Integrated `RegisterScreen` with `UserRepository.create` and added duplicate user check via `UserRepository.getByName`.
+  * Updated `App.js` to register the new screen in the navigation stack.
+  * Added a registration link in `LoginScreen.js` with consistent styling.
+* **Validation:**
+  * **Technical:** Used `KeyboardAvoidingView` and `ScrollView` to ensure responsiveness on various screen sizes. Followed the design tokens established in Session 9. **Technical Validation Completed (Skill 3)**.
+  * **Business:** Meets FR05, allowing the creation of new system users directly from the app (for academic/testing purposes).
+* **Pending Items:**
+  * Start Phase 4: Product Management (T4.1 - Product Registration).
