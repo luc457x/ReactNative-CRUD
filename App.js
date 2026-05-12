@@ -4,14 +4,15 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { initDatabase } from './src/database/database';
+import LoginScreen from './src/screens/LoginScreen';
 
 // --- Tela Placeholder (será substituída nas Fases 3-5) ---
 function PlaceholderScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>EstoqueApp</Text>
-      <Text style={styles.subtitle}>Infraestrutura OK ✓</Text>
-      <Text style={styles.info}>Navigation + SQLite configurados.</Text>
+      <Text style={styles.title}>Painel de Controle</Text>
+      <Text style={styles.subtitle}>Login realizado com sucesso! ✅</Text>
+      <Text style={styles.info}>O Dashboard será implementado na Fase 5.</Text>
       <StatusBar style="auto" />
     </View>
   );
@@ -38,9 +39,10 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Placeholder"
+        initialRouteName="Login"
         screenOptions={{ headerShown: false }}
       >
+        <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Placeholder" component={PlaceholderScreen} />
       </Stack.Navigator>
     </NavigationContainer>

@@ -1,8 +1,8 @@
 # Registro de Progresso (PROGRESS.md)
 
 ## Resumo do Status Atual
-* **Fase Atual:** **Fase 2 CONCLUÍDA** ✅ — Toda a infraestrutura e os repositórios (CRUD) do banco de dados estão prontos. Próximo passo: Fase 3 (Telas de Acesso e Usuários).
-* **Último Commit/Atualização:** T2.2 + T2.3 + T2.4 — UserRepository e ProductRepository implementados com sucesso usando expo-sqlite síncrono.
+* **Fase Atual:** **Fase 3 EM ANDAMENTO** 🛠️ — Tela de Login concluída. Próximo passo: Tela de Cadastro de Usuários (T3.2).
+* **Último Commit/Atualização:** T3.1 — Implementação da LoginScreen com integração ao UserRepository.
 
 ---
 
@@ -151,3 +151,20 @@
   * Códigos implementados seguindo a API assíncrona/síncrona moderna do `expo-sqlite` (métodos `runAsync`, `getAllAsync`, `getFirstAsync`).
 * **Pendências:**
   * Iniciar a Fase 3 (T3.1 - Tela de Login).
+
+---
+
+### Sessão 9: Início da Fase 3 (T3.1)
+* **Data:** 12 de Maio de 2026
+* **Agente:** Desenvolvedor UI/Frontend
+* **Tarefas Concluídas:** T3.1
+* **Resumo das Ações:**
+  * Criação da `LoginScreen.js` em `src/screens/`.
+  * Implementação de UI moderna (Dark Mode) com `SafeAreaView` e `KeyboardAvoidingView`.
+  * Integração com `UserRepository.login` para autenticação via SQLite.
+  * Atualização do `App.js` para definir a `LoginScreen` como tela inicial da aplicação.
+* **Validação:**
+  * **Técnica:** Seguindo `HARNESS.md`, a interface é responsiva e utiliza componentes homologados. **Validação Técnica Concluída (Skill 3)**.
+  * **Negócio:** Atende ao RF01, permitindo acesso apenas via credenciais válidas no banco local.
+* **Pendências:**
+  * Desenvolver Tela de Cadastro de Usuários (T3.2).

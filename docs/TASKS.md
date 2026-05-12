@@ -16,7 +16,7 @@
   - [x] Permitir a inserção de produtos com o mesmo nome como entradas separadas no banco, desde que tenham validades diferentes.
 
 ## Fase 3: Telas de Acesso e Usuários
-- [ ] **T3.1:** Desenvolver Tela de Login (Ref: RF01).
+- [x] **T3.1:** Desenvolver Tela de Login (Ref: RF01).
 - [ ] **T3.2:** Desenvolver Tela de Cadastro de Usuários/Funcionários (Ref: RF05).
 - [ ] **T3.3:** Integrar telas de acesso com o repositório SQLite.
 
