@@ -6,7 +6,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { initDatabase } from './src/database/database';
 import LoginScreen from './src/screens/LoginScreen';
 
-// --- Tela Placeholder (será substituída nas Fases 3-5) ---
+// --- Placeholder Screen (will be replaced in Phases 3-5) ---
 function PlaceholderScreen() {
   return (
     <View style={styles.container}>
@@ -18,7 +18,7 @@ function PlaceholderScreen() {
   );
 }
 
-// --- Stack Navigator raiz ---
+// --- Root Stack Navigator ---
 const Stack = createNativeStackNavigator();
 
 export default function App() {

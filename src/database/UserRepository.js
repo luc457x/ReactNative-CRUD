@@ -1,79 +1,79 @@
 import db from './database';
 
 export const UserRepository = {
-  // Cria um novo usuário
-  create: async (nome, senha, permissao = 'user') => {
+  // Creates a new user
+  create: async (name, password, permission = 'user') => {
     try {
       const result = await db.runAsync(
-        'INSERT INTO Usuarios (nome, senha, permissao) VALUES (?, ?, ?)',
-        [nome, senha, permissao]
+        'INSERT INTO Users (name, password, permission) VALUES (?, ?, ?)',
+        [name, password, permission]
       );
       return result.lastInsertRowId;
     } catch (error) {
-      console.error('Erro ao criar usuário:', error);
+      console.error('Error creating user:', error);
       throw error;
     }
   },
 
-  // Retorna todos os usuários
+  // Returns all users
   getAll: async () => {
     try {
-      return await db.getAllAsync('SELECT * FROM Usuarios');
+      return await db.getAllAsync('SELECT * FROM Users');
     } catch (error) {
-      console.error('Erro ao buscar usuários:', error);
+      console.error('Error fetching users:', error);
       throw error;
     }
   },
 
-  // Retorna um usuário pelo ID
+  // Returns a user by ID
   getById: async (id) => {
     try {
-      return await db.getFirstAsync('SELECT * FROM Usuarios WHERE id = ?', [id]);
+      return await db.getFirstAsync('SELECT * FROM Users WHERE id = ?', [id]);
     } catch (error) {
-      console.error('Erro ao buscar usuário por ID:', error);
+      console.error('Error fetching user by ID:', error);
       throw error;
     }
   },
   
-  // Busca um usuário pelo nome (útil para login/verificação)
-  getByNome: async (nome) => {
+  // Finds a user by name (useful for login/verification)
+  getByName: async (name) => {
       try {
-          return await db.getFirstAsync('SELECT * FROM Usuarios WHERE nome = ?', [nome]);
+          return await db.getFirstAsync('SELECT * FROM Users WHERE name = ?', [name]);
       } catch (error) {
-          console.error('Erro ao buscar usuário por nome:', error);
+          console.error('Error fetching user by name:', error);
           throw error;
       }
   },
 
-  // Autentica um usuário
-  login: async (nome, senha) => {
+  // Authenticates a user
+  login: async (name, password) => {
       try {
-          return await db.getFirstAsync('SELECT * FROM Usuarios WHERE nome = ? AND senha = ?', [nome, senha]);
+          return await db.getFirstAsync('SELECT * FROM Users WHERE name = ? AND password = ?', [name, password]);
       } catch (error) {
-          console.error('Erro ao autenticar usuário:', error);
+          console.error('Error authenticating user:', error);
           throw error;
       }
   },
 
-  // Atualiza um usuário existente
-  update: async (id, nome, senha, permissao) => {
+  // Updates an existing user
+  update: async (id, name, password, permission) => {
     try {
       await db.runAsync(
-        'UPDATE Usuarios SET nome = ?, senha = ?, permissao = ? WHERE id = ?',
-        [nome, senha, permissao, id]
+        'UPDATE Users SET name = ?, password = ?, permission = ? WHERE id = ?',
+        [name, password, permission, id]
       );
     } catch (error) {
-      console.error('Erro ao atualizar usuário:', error);
+      console.error('Error updating user:', error);
       throw error;
     }
   },
 
-  // Exclui um usuário
+  // Deletes a user
   delete: async (id) => {
     try {
-      await db.runAsync('DELETE FROM Usuarios WHERE id = ?', [id]);
+      await db.runAsync('DELETE FROM Users WHERE id = ?', [id]);
     } catch (error) {
-      console.error('Erro ao deletar usuário:', error);
+      console.error('Error deleting user:', error);
       throw error;
     }
   }

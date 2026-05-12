@@ -29,8 +29,8 @@ export default function LoginScreen({ navigation }) {
       const user = await UserRepository.login(username, password);
       
       if (user) {
-        // Sucesso no login
-        // Por enquanto navega para o Placeholder (será o Dashboard na Fase 5)
+        // Successful login
+        // For now, navigates to Placeholder (will be Dashboard in Phase 5)
         navigation.replace('Placeholder');
       } else {
         Alert.alert('Falha na Autenticação', 'Usuário ou senha incorretos.');

@@ -1,44 +1,44 @@
 import * as SQLite from 'expo-sqlite';
 
-// Abre (ou cria) o banco de dados local.
-// O arquivo estoque.db ficará no diretório privado do app no dispositivo.
-const db = SQLite.openDatabaseSync('estoque.db');
+// Open (or create) the local database.
+// The inventory.db file will be in the app's private directory on the device.
+const db = SQLite.openDatabaseSync('inventory.db');
 
 export const initDatabase = async () => {
   try {
     await db.execAsync(`
       PRAGMA journal_mode = WAL;
       
-      CREATE TABLE IF NOT EXISTS Usuarios (
+      CREATE TABLE IF NOT EXISTS Users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        nome TEXT NOT NULL,
-        senha TEXT NOT NULL,
-        permissao TEXT NOT NULL DEFAULT 'user'
+        name TEXT NOT NULL,
+        password TEXT NOT NULL,
+        permission TEXT NOT NULL DEFAULT 'user'
       );
       
-      CREATE TABLE IF NOT EXISTS Produtos (
+      CREATE TABLE IF NOT EXISTS Products (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        nome TEXT NOT NULL,
-        categoria TEXT,
-        quantidade INTEGER NOT NULL DEFAULT 0,
-        precoUnitario REAL NOT NULL DEFAULT 0.0,
-        dataValidade TEXT
+        name TEXT NOT NULL,
+        category TEXT,
+        quantity INTEGER NOT NULL DEFAULT 0,
+        unitPrice REAL NOT NULL DEFAULT 0.0,
+        expirationDate TEXT
       );
     `);
 
-    // Semeia o usuário admin se a tabela estiver vazia
-    const result = await db.getAllAsync('SELECT count(*) as count FROM Usuarios');
+    // Seed the admin user if the table is empty
+    const result = await db.getAllAsync('SELECT count(*) as count FROM Users');
     const count = result[0].count;
 
     if (count === 0) {
       await db.runAsync(
-        'INSERT INTO Usuarios (nome, senha, permissao) VALUES (?, ?, ?)',
+        'INSERT INTO Users (name, password, permission) VALUES (?, ?, ?)',
         ['admin', 'admin', 'admin']
       );
-      console.log('Usuário admin semeado com sucesso!');
+      console.log('Admin user seeded successfully!');
     }
   } catch (error) {
-    console.error('Erro ao inicializar o banco de dados:', error);
+    console.error('Error initializing database:', error);
   }
 };
 

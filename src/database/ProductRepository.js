@@ -1,86 +1,86 @@
 import db from './database';
 
 export const ProductRepository = {
-  // Cria um novo produto
-  create: async (nome, categoria, quantidade, precoUnitario, dataValidade) => {
+  // Creates a new product
+  create: async (name, category, quantity, unitPrice, expirationDate) => {
     try {
       const result = await db.runAsync(
-        'INSERT INTO Produtos (nome, categoria, quantidade, precoUnitario, dataValidade) VALUES (?, ?, ?, ?, ?)',
-        [nome, categoria, quantidade, precoUnitario, dataValidade]
+        'INSERT INTO Products (name, category, quantity, unitPrice, expirationDate) VALUES (?, ?, ?, ?, ?)',
+        [name, category, quantity, unitPrice, expirationDate]
       );
       return result.lastInsertRowId;
     } catch (error) {
-      console.error('Erro ao criar produto:', error);
+      console.error('Error creating product:', error);
       throw error;
     }
   },
 
-  // Retorna todos os produtos
+  // Returns all products
   getAll: async () => {
     try {
-      return await db.getAllAsync('SELECT * FROM Produtos');
+      return await db.getAllAsync('SELECT * FROM Products');
     } catch (error) {
-      console.error('Erro ao buscar produtos:', error);
+      console.error('Error fetching products:', error);
       throw error;
     }
   },
 
-  // Retorna um produto pelo ID
+  // Returns a product by ID
   getById: async (id) => {
     try {
-      return await db.getFirstAsync('SELECT * FROM Produtos WHERE id = ?', [id]);
+      return await db.getFirstAsync('SELECT * FROM Products WHERE id = ?', [id]);
     } catch (error) {
-      console.error('Erro ao buscar produto por ID:', error);
+      console.error('Error fetching product by ID:', error);
       throw error;
     }
   },
 
-  // Atualiza um produto existente
-  update: async (id, nome, categoria, quantidade, precoUnitario, dataValidade) => {
+  // Updates an existing product
+  update: async (id, name, category, quantity, unitPrice, expirationDate) => {
     try {
       await db.runAsync(
-        'UPDATE Produtos SET nome = ?, categoria = ?, quantidade = ?, precoUnitario = ?, dataValidade = ? WHERE id = ?',
-        [nome, categoria, quantidade, precoUnitario, dataValidade, id]
+        'UPDATE Products SET name = ?, category = ?, quantity = ?, unitPrice = ?, expirationDate = ? WHERE id = ?',
+        [name, category, quantity, unitPrice, expirationDate, id]
       );
     } catch (error) {
-      console.error('Erro ao atualizar produto:', error);
+      console.error('Error updating product:', error);
       throw error;
     }
   },
 
-  // Exclui um produto
+  // Deletes a product
   delete: async (id) => {
     try {
-      await db.runAsync('DELETE FROM Produtos WHERE id = ?', [id]);
+      await db.runAsync('DELETE FROM Products WHERE id = ?', [id]);
     } catch (error) {
-      console.error('Erro ao deletar produto:', error);
+      console.error('Error deleting product:', error);
       throw error;
     }
   },
 
-  // Incrementa a quantidade de um produto
+  // Increments the quantity of a product
   incrementQuantity: async (id, amount = 1) => {
     try {
       await db.runAsync(
-        'UPDATE Produtos SET quantidade = quantidade + ? WHERE id = ?',
+        'UPDATE Products SET quantity = quantity + ? WHERE id = ?',
         [amount, id]
       );
     } catch (error) {
-      console.error('Erro ao incrementar quantidade do produto:', error);
+      console.error('Error incrementing product quantity:', error);
       throw error;
     }
   },
 
-  // Decrementa a quantidade de um produto
+  // Decrements the quantity of a product
   decrementQuantity: async (id, amount = 1) => {
     try {
-      // Impede que a quantidade fique negativa
+      // Prevents quantity from becoming negative
       await db.runAsync(
-        'UPDATE Produtos SET quantidade = MAX(0, quantidade - ?) WHERE id = ?',
+        'UPDATE Products SET quantity = MAX(0, quantity - ?) WHERE id = ?',
         [amount, id]
       );
     } catch (error) {
-      console.error('Erro ao decrementar quantidade do produto:', error);
+      console.error('Error decrementing product quantity:', error);
       throw error;
     }
   }
