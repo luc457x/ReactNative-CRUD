@@ -26,14 +26,17 @@ Garantir que o versionamento e a blindagem de arquivos sejam feitos de forma int
 Ao concluir uma tarefa, subtarefa ou fase, seguindo as diretrizes de granularidade do `WORKFLOW.md`.
 
 **Objetivo:** 
-Garantir que as alterações sejam salvas de forma consistente em qualquer Sistema Operacional (Windows, Linux, macOS), utilizando operadores de segurança.
+Garantir que as alterações sejam salvas de forma consistente, organizada por prioridade e compatível com qualquer Sistema Operacional (Windows, Linux, macOS).
 
 **Passo a passo que a IA deve executar:**
-1. **Listar Alterações:** Verificar quais arquivos foram modificados.
-2. **Comando Encadeado Seguro:** Utilizar o operador `&&` para encadear os comandos `add` e `commit`. Isso garante que o commit só ocorra se o `add` for bem-sucedido.
-   - Exemplo: `git add arquivo1.js docs/PROGRESS.md && git commit -m "feat: descrição da tarefa"`
-3. **Idioma:** Sempre redigir a mensagem de commit em **Português-br**, conforme a Diretriz Universal no `AGENTS.md`.
-4. **Verificar Sucesso:** Confirmar a saída do comando para garantir que o commit foi criado com sucesso.
+1. **Análise de Prioridade:** Avaliar as mudanças e separá-las em blocos atômicos. Priorizar sempre o código funcional e regras de negócio (Core) antes de commits de infraestrutura, documentação meta ou skills.
+2. **Listar Alterações:** Identificar quais arquivos pertencem a cada bloco de prioridade definido.
+3. **Comando de Commit (Compatibilidade):**
+   - **Padrão:** Utilizar o operador `&&` para encadear `git add` e `git commit`.
+   - **Workaround PowerShell (Windows Legacy):** Caso o ambiente utilize PowerShell < 7 (onde `&&` não é reconhecido), utilizar o separador `;` ou executar os comandos de forma sequencial e independente.
+   - Exemplo: `git add arquivo.js; git commit -m "feat: descrição"`
+4. **Idioma:** Sempre redigir a mensagem de commit em **Português-br**, conforme a Diretriz Universal no `AGENTS.md`.
+5. **Verificar Sucesso:** Confirmar a saída do comando para garantir que o commit foi criado com sucesso antes de iniciar o próximo bloco de prioridade.
 
 ---
 
