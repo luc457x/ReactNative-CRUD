@@ -91,6 +91,15 @@ export default function LoginScreen({ navigation }) {
               {loading ? 'Entrando...' : 'Entrar'}
             </Text>
           </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.registerLink}
+            onPress={() => navigation.navigate('Register')}
+          >
+            <Text style={styles.registerLinkText}>
+              Não tem uma conta? <Text style={styles.registerLinkBold}>Cadastre-se</Text>
+            </Text>
+          </TouchableOpacity>
         </View>
 
         <View style={styles.footer}>
@@ -181,6 +190,18 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#ffffff',
     fontSize: 18,
+    fontWeight: 'bold',
+  },
+  registerLink: {
+    marginTop: 20,
+    alignItems: 'center',
+  },
+  registerLinkText: {
+    color: '#94a3b8',
+    fontSize: 14,
+  },
+  registerLinkBold: {
+    color: '#3b82f6',
     fontWeight: 'bold',
   },
   footer: {
