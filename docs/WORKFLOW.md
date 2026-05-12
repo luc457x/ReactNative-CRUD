@@ -1,15 +1,20 @@
-# Diretriz de Workflow Para Desenvolvimento do Projeto
+---
+name: agent_workflow
+description: Mandatory protocols for communication, task completion, and conflict management.
+---
 
-1. **Antes de iniciar uma tarefa** sempre verifique no arquivo `AGENTS.md` (na raiz) qual agente é responsável pela Fase em que a tarefa se encontra, e adote as diretrizes/persona dele para a execução.
-2. **Gerenciamento de Conflitos:** Se você cometer um erro ou precisar alterar um fluxo já definido no `docs/TASKS.md`, crie uma nova tarefa de "Correção" ou "Refatoração" com um título claro (ex: "[FIX] Ajuste no fluxo de Login") e marque a tarefa antiga como **Bloqueada** ou **Resolvida** com uma nota explicativa.
-3. **Protocolo de Conclusão de Tarefa:** Antes de marcar uma tarefa como concluída no `TASKS.md`, você deve obrigatoriamente:
-   - **Fase 1: Validação Técnica:** Verificar se o código **respeita as especificações técnicas** definidas nos *Critérios de Aceite Técnicos* do **[`docs/HARNESS.md`](docs/HARNESS.md)**.
-   - **Fase 2: Validação de Escopo:** Validar se o código **respeita as especificações de negócio** (Requisitos Funcionais e Regras de Negócio do **[`docs/SPEC.md`](docs/SPEC.md)**) pertinentes a esta tarefa específica.
-   - **Fase 3: Registro de Progresso:** Atualizar o status da tarefa no `TASKS.md` e registrar o log da atividade no **[`docs/PROGRESS.md`](docs/PROGRESS.md)** para preservar o contexto.
-4. **Comunicação de Workflow (Explicitação):** Você deve sempre declarar explicitamente quando está seguindo uma regra deste workflow. Exemplos:
-   - "Para iniciar a [Tarefa X], estou consultando o `WORKFLOW.md` e assumindo a persona do [Agente] conforme definido no `AGENTS.md`."
-   - "De acordo com o workflow, vou criar uma nova tarefa de correção com o título '[FIX] Ajuste em [...]' para tratar a alteração na tarefa concluída."
-   - "Seguindo o Processo de Validação do `HARNESS.md`, estou concluindo a [Tarefa X] e atualizando os documentos de progresso."
-5. **Protocolo de Commit e Granularidade:** Sempre que uma fase, tarefa ou subtarefa for concluída, o trabalho deve ser commitado seguindo estas diretrizes:
-   - **Commits Atômicos:** Separe commits para cada alteração específica. Se para adicionar uma funcionalidade for necessário alterar outra existente, comite primeiro a alteração na funcionalidade existente (documentando o motivo técnico para a mudança em função da nova implementação) e depois comite a nova funcionalidade.
-   - **Mensagens de Commit:** A linha de assunto deve ter cerca de 50 caracteres, sendo breve, significativa e informativa sobre o objetivo principal do commit.
+# Workflow Guideline (WORKFLOW.md)
+
+1. **Before starting a task** always check the `AGENTS.md` file (at the root) to see which agent is responsible for the Phase the task is in, and adopt their directives/persona for execution.
+2. **Conflict Management:** If you make a mistake or need to change a flow already defined in `docs/TASKS.md`, create a new "Correction" or "Refactoring" task with a clear title (e.g., "[FIX] Login flow adjustment") and mark the old task as **Blocked** or **Resolved** with an explanatory note.
+3. **Task Completion Protocol:** Before marking a task as completed in `TASKS.md`, you must mandatorily:
+   - **Phase 1: Technical Validation:** Verify if the code **respects the technical specifications** defined in the *Technical Acceptance Criteria* of **[`docs/HARNESS.md`](docs/HARNESS.md)**.
+   - **Phase 2: Scope Validation:** Validate if the code **respects the business specifications** (Functional Requirements and Business Rules of **[`docs/SPEC.md`](docs/SPEC.md)**) relevant to this specific task.
+   - **Phase 3: Progress Registration:** Update the task status in `TASKS.md` and record the activity log in **[`docs/PROGRESS.md`](docs/PROGRESS.md)** to preserve context.
+4. **Workflow Communication (Explicitness):** You must always explicitly declare when you are following a rule from this workflow. Examples:
+   - "To start [Task X], I am consulting `WORKFLOW.md` and assuming the [Agent] persona as defined in `AGENTS.md`."
+   - "According to the workflow, I will create a new correction task with the title '[FIX] Adjustment in [...]' to address the change in the completed task."
+   - "Following the `HARNESS.md` Validation Process, I am completing [Task X] and updating the progress documents."
+5. **Commit Protocol and Granularity:** Whenever a phase, task, or subtask is completed, the work must be committed following these guidelines:
+   - **Atomic Commits:** Separate commits for each specific change. If adding a feature requires changing an existing one, commit the change to the existing feature first (documenting the technical reason for the change due to the new implementation) and then commit the new feature.
+   - **Commit Messages:** The subject line should be about 50 characters, being brief, meaningful, and informative about the main goal of the commit.

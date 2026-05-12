@@ -1,170 +1,175 @@
-# Registro de Progresso (PROGRESS.md)
+---
+name: progress_log
+description: Historical log of sessions, completed tasks, and current project status.
+---
 
-## Resumo do Status Atual
-* **Fase Atual:** **Fase 3 EM ANDAMENTO** 🛠️ — Tela de Login concluída. Próximo passo: Tela de Cadastro de Usuários (T3.2).
-* **Último Commit/Atualização:** T3.1 — Implementação da LoginScreen com integração ao UserRepository.
+# Progress Log (PROGRESS.md)
+
+## Current Status Summary
+* **Current Phase:** **Phase 3 IN PROGRESS** 🛠️ — Login Screen completed. Next step: User Registration Screen (T3.2).
+* **Last Commit/Update:** T3.1 — Implementation of LoginScreen with integration to UserRepository.
 
 ---
 
-## Log de Sessões
+## Session Log
 
-### Sessão 0: Setup da Engenharia de Prompt/IA
-* **Data:** 08 de Maio de 2026
-* **Resumo das Ações:**
-  * Refinamento do `SPEC.md`, corrigindo o escopo para Mobile, adicionando RNFs e linkando os diagramas `.puml`.
-  * Criação do `TASKS.md` dividindo o projeto em 6 fases lógicas, com destaque para a injeção do usuário `admin` diretamente no SQLite.
-  * Criação do `AGENTS.md` definindo papéis e delegando tarefas de acordo com o poder e custo do LLM (Sênior, Pleno, Júnior).
-  * Criação do `HARNESS.md` padronizando os comandos do Expo e as bibliotecas fixas (ex: `@react-navigation/native` e `expo-sqlite`).
-  * Criação do `.agentignore` para blindar o ambiente contra leitura de arquivos pesados (node_modules, builds).
-  * Criação de `.gitignore` otimizado para o stack tecnológico (React Native/Expo e SQLite) e inicialização do repositório Git.
-  * Criação do `SKILLS.md` para documentar procedimentos padrão da IA (ex: `context_aware_init`) e atualização do sumário no `AGENTS.md`.
-* **Decisões Arquiteturais Tomadas:**
-  * O projeto não terá backend em nuvem. Será puramente offline (SQLite embutido).
-  * O usuário Admin deve passar pelo fluxo normal de login, validando-se no banco local.
-* **Pendências (Bugs / Known Issues):**
-  * Nenhuma no momento. A Fase 0 está concluída com excelência. Prontos para a tarefa T1.1.
+### Session 0: AI/Prompt Engineering Setup
+* **Date:** May 08, 2026
+* **Summary of Actions:**
+  * Refinement of `SPEC.md`, correcting the scope to Mobile, adding NFRs, and linking `.puml` diagrams.
+  * Creation of `TASKS.md` dividing the project into 6 logical phases, highlighting the injection of the `admin` user directly into SQLite.
+  * Creation of `AGENTS.md` defining roles and delegating tasks according to LLM power and cost (Senior, Mid-level, Junior).
+  * Creation of `HARNESS.md` standardizing Expo commands and fixed libraries (e.g., `@react-navigation/native` and `expo-sqlite`).
+  * Creation of `.agentignore` to shield the environment from reading heavy files (node_modules, builds).
+  * Creation of optimized `.gitignore` for the tech stack (React Native/Expo and SQLite) and initialization of the Git repository.
+  * Creation of `SKILLS.md` to document standard AI processes (e.g., `context_aware_init`) and update of the summary in `AGENTS.md`.
+* **Architectural Decisions Made:**
+  * The project will not have a cloud backend. It will be purely offline (embedded SQLite).
+  * The Admin user must go through the normal login flow, validating themselves in the local database.
+* **Pending Items (Bugs / Known Issues):**
+  * None at the moment. Phase 0 is completed with excellence. Ready for task T1.1.
 
 ---
 
-### Sessão 1: Infraestrutura Completa (T1.1 → T1.4)
-* **Data:** 09 de Maio de 2026
-* **Agente:** Arquiteto Sênior
-* **Tarefas Concluídas:** T1.1, T1.2, T1.3, T1.4
+### Session 1: Complete Infrastructure (T1.1 → T1.4)
+* **Date:** May 09, 2026
+* **Agent:** Senior Architect
+* **Completed Tasks:** T1.1, T1.2, T1.3, T1.4
 
-#### T1.1 — Inicialização Expo
-  * Executado `npx create-expo-app@latest` com template `blank` (JavaScript puro, conforme RNF01).
-  * Corrigido `app.json`: nome `EstoqueApp`, slug `estoque-app`.
-  * `.gitignore` enriquecido (SQLite, IDEs, `.env`).
+#### T1.1 — Expo Initialization
+  * Executed `npx create-expo-app@latest` with `blank` template (pure JavaScript, according to NFR01).
+  * Corrected `app.json`: name `EstoqueApp`, slug `estoque-app`.
+  * Enriched `.gitignore` (SQLite, IDEs, `.env`).
 
 #### T1.2 — React Navigation
-  * Instalados via `npx expo install`:
+  * Installed via `npx expo install`:
     * `@react-navigation/native` v7
     * `@react-navigation/native-stack` v7
-    * `react-native-screens` (peer dep SDK 54 compatível)
-    * `react-native-safe-area-context` (peer dep SDK 54 compatível)
-  * `App.js` configurado com `NavigationContainer` + `createNativeStackNavigator` como raiz.
-  * Stack Navigator com `headerShown: false` — cada tela gerencia seu próprio header.
-  * Tela `PlaceholderScreen` temporária adicionada (será removida na Fase 3).
+    * `react-native-screens` (SDK 54 compatible peer dep)
+    * `react-native-safe-area-context` (SDK 54 compatible peer dep)
+  * `App.js` configured with `NavigationContainer` + `createNativeStackNavigator` as root.
+  * Stack Navigator with `headerShown: false` — each screen manages its own header.
+  * Temporary `PlaceholderScreen` added (will be removed in Phase 3).
 
 #### T1.3 — expo-sqlite
-  * Instalado `expo-sqlite` ~16.0.10 (SDK 54 compatível).
-  * Config plugin registrado automaticamente no `app.json` pelo `expo install`.
-  * Criado `src/database/database.js` com `SQLite.openDatabaseSync('estoque.db')` — API síncrona moderna (sem callbacks legados).
+  * Installed `expo-sqlite` ~16.0.10 (SDK 54 compatible).
+  * Config plugin automatically registered in `app.json` by `expo install`.
+  * Created `src/database/database.js` with `SQLite.openDatabaseSync('estoque.db')` — modern synchronous API (no legacy callbacks).
 
-#### T1.4 — Estrutura de Pastas
-  * `src/components/`, `src/screens/`, `src/database/`, `src/utils/` criados.
-  * `src/database/.gitkeep` removido (substituído pelo `database.js` real).
+#### T1.4 — Folder Structure
+  * `src/components/`, `src/screens/`, `src/database/`, `src/utils/` created.
+  * `src/database/.gitkeep` removed (replaced by the real `database.js`).
 
-* **Validação:** Metro Bundler subiu em `http://localhost:8081` sem erros após todas as instalações.
-* **Decisões Arquiteturais Tomadas:**
-  * `openDatabaseSync` (API síncrona do expo-sqlite v16) escolhida em vez da API assíncrona antiga — mais limpa e compatível com o padrão de hooks que usaremos nas telas.
-  * `headerShown: false` no Stack raiz — todas as telas implementarão seus próprios headers customizados para consistência visual.
-* **Pendências (Bugs / Known Issues):**
-  * Nenhuma. **Fase 1 concluída.** Prontos para iniciar a Fase 2 (T2.1 — criação das tabelas SQLite + seed do admin).
-
----
-
-### Sessão 2: Banco de Dados Inicial (T2.1)
-* **Data:** 08 de Maio de 2026
-* **Agente:** Arquiteto Sênior
-* **Tarefas Concluídas:** T2.1, T2.1.1
-
-#### T2.1 — Script de Inicialização
-  * Criada a função `initDatabase` em `src/database/database.js`.
-  * Configurada a criação das tabelas `Usuarios` (id, nome, senha, permissao) e `Produtos` (id, nome, categoria, quantidade, precoUnitario, dataValidade).
-
-#### T2.1.1 — Usuário Admin
-  * Adicionada regra de seed: se a tabela `Usuarios` estiver vazia, injetamos automaticamente um usuário admin.
-  * O `App.js` foi refatorado para utilizar o `useEffect` e aguardar o `initDatabase()` antes de renderizar a navegação.
-
-* **Validação:** 
-  * Checado o fluxo de negócio (banco instanciado).
-  * **Correção de Build Web:** Durante a validação de compilação web (`npx expo export -p web`), o módulo `expo-sqlite` falhou por não conseguir resolver arquivos `.wasm` nativos da dependência no navegador. Para corrigir isso e manter o ambiente de desenvolvimento funcionando também na web, foi criado um `metro.config.js` adicionando `wasm` aos `assetExts` do bundler.
-* **Pendências:** 
----
-
-### Sessão 3: Refinamento de Workflow (Documentação)
-* **Data:** 09 de Maio de 2026
-* **Resumo das Ações:**
-  * Atualização do `docs/WORKFLOW.md` para incluir a regra de **Comunicação Explicativa**. Agora a IA deve declarar explicitamente quando está consultando diretrizes de workflow, assumindo personas ou realizando validações.
-  * Reestruturação do `docs/HARNESS.md` e `docs/WORKFLOW.md`:
-    * `HARNESS.md` agora foca exclusivamente em **Critérios Técnicos** (Build, Limpeza, Responsividade, Padrões de Código).
-    * `WORKFLOW.md` agora centraliza o **Protocolo de Conclusão de Tarefa**, focando em garantir que o código **respeite as especificações** técnicas e de negócio pertinentes.
-* **Pendências:** 
----
-
-### Sessão 4: Padronização de Commits (Regras de Workflow)
-* **Data:** 09 de Maio de 2026
-* **Resumo das Ações:**
-  * Inclusão do **Protocolo de Commit e Granularidade** no `docs/WORKFLOW.md`.
-  * Definição da obrigatoriedade de **Commits Atômicos** (separação de alterações em funcionalidades existentes vs. novas implementações).
-  * Padronização das mensagens de commit (assunto informativo de ~50 caracteres).
-* **Decisões Arquiteturais Tomadas:**
-  * Adoção de uma política de Git mais rigorosa para facilitar o rastreamento de mudanças e auditoria de código, especialmente em fluxos de trabalho colaborativos assistidos por IA.
-* **Pendências:** 
-  * Retomar a Fase 2 (T2.2 — Repositório CRUD para Usuários).
+* **Validation:** Metro Bundler started at `http://localhost:8081` without errors after all installations.
+* **Architectural Decisions Made:**
+  * `openDatabaseSync` (synchronous API of expo-sqlite v16) chosen instead of the old asynchronous API — cleaner and compatible with the hook pattern we will use in the screens.
+  * `headerShown: false` in the root Stack — all screens will implement their own custom headers for visual consistency.
+* **Pending Items (Bugs / Known Issues):**
+  * None. **Phase 1 completed.** Ready to start Phase 2 (T2.1 — SQLite tables creation + admin seed).
 
 ---
 
-### Sessão 5: Manutenção de Ambiente (Otimização IA)
-* **Data:** 09 de Maio de 2026
-* **Resumo das Ações:**
-  * Atualização do `.agentignore` para incluir `.git/`, `dist/` e extensões de banco de dados (`.db`, `.sqlite`).
-  * Objetivo: Melhorar a performance de leitura da IA e economizar tokens de contexto, evitando a varredura de metadados do Git e binários de build.
-* **Validação:**
-  * O arquivo `.agentignore` agora reflete os padrões de exclusão recomendados para projetos React Native assistidos por agentes.
-* **Pendências:**
-  * Retomar a Fase 2 (T2.2 — Repositório CRUD para Usuários).
+### Session 2: Initial Database (T2.1)
+* **Date:** May 08, 2026
+* **Agent:** Senior Architect
+* **Completed Tasks:** T2.1, T2.1.1
+
+#### T2.1 — Initialization Script
+  * Created the `initDatabase` function in `src/database/database.js`.
+  * Configured the creation of `Users` (id, name, password, permission) and `Products` (id, name, category, quantity, unitPrice, expirationDate) tables.
+
+#### T2.1.1 — Admin User
+  * Added seed rule: if the `Users` table is empty, automatically inject an admin user.
+  * `App.js` was refactored to use `useEffect` and wait for `initDatabase()` before rendering navigation.
+
+* **Validation:** 
+  * Checked business flow (database instantiated).
+  * **Web Build Correction:** During web build validation (`npx expo export -p web`), the `expo-sqlite` module failed because it couldn't resolve native `.wasm` files of the dependency in the browser. To fix this and keep the development environment working also on web, a `metro.config.js` was created adding `wasm` to the bundler's `assetExts`.
+* **Pending Items:** 
+---
+
+### Session 3: Workflow Refinement (Documentation)
+* **Date:** May 09, 2026
+* **Summary of Actions:**
+  * Update of `docs/WORKFLOW.md` to include the **Explanatory Communication** rule. Now the AI must explicitly declare when it is consulting workflow guidelines, assuming personas, or performing validations.
+  * Restructuring of `docs/HARNESS.md` and `docs/WORKFLOW.md`:
+    * `HARNESS.md` now focuses exclusively on **Technical Criteria** (Build, Cleanliness, Responsiveness, Code Standards).
+    * `WORKFLOW.md` now centralizes the **Task Completion Protocol**, focusing on ensuring that the code **respects the technical and business specifications** relevant.
+* **Pending Items:** 
+---
+
+### Session 4: Commit Standardization (Workflow Rules)
+* **Date:** May 09, 2026
+* **Summary of Actions:**
+  * Inclusion of the **Commit Protocol and Granularity** in `docs/WORKFLOW.md`.
+  * Definition of the obligation for **Atomic Commits** (separation of changes in existing functionalities vs. new implementations).
+  * Standardization of commit messages (informative subject of ~50 characters).
+* **Architectural Decisions Made:**
+  * Adoption of a more rigorous Git policy to facilitate change tracking and code auditing, especially in AI-assisted collaborative workflows.
+* **Pending Items:** 
+  * Resume Phase 2 (T2.2 — CRUD Repository for Users).
 
 ---
 
-### Sessão 6: Ajuste de Diretrizes IA (AGENTS.md)
-* **Data:** 09 de Maio de 2026
-* **Resumo das Ações:**
-  * Atualização da Diretriz Universal no `AGENTS.md` para forçar Português-br em todas as interações (incluindo commits) e exigir concisão extrema.
-* **Validação:**
-  * Regra aplicada e já utilizada no próximo commit.
-* **Pendências:**
-  * Retomar a Fase 2 (T2.2).
+### Session 5: Environment Maintenance (AI Optimization)
+* **Date:** May 09, 2026
+* **Summary of Actions:**
+  * Update of `.agentignore` to include `.git/`, `dist/`, and database extensions (`.db`, `.sqlite`).
+  * Goal: Improve AI reading performance and save context tokens, avoiding Git metadata and build binaries scanning.
+* **Validation:**
+  * The `.agentignore` file now reflects the recommended exclusion patterns for AI-assisted React Native projects.
+* **Pending Items:**
+  * Resume Phase 2 (T2.2 — CRUD Repository for Users).
 
 ---
 
-### Sessão 7: Documentação de Skills (SKILLS.md)
-* **Data:** 09 de Maio de 2026
-* **Resumo das Ações:**
-  * Criação da **Skill 2** para `atomic_commit_cross`.
-  * Objetivo: Padronizar o comando de commit encadeado usando `&&` para compatibilidade com PowerShell/Windows/Linux e garantir o uso de Português-br nas mensagens.
-* **Validação:**
-  * Comando testado e funcional nas sessões anteriores.
-* **Pendências:**
-  * Iniciar a Fase 3 (T3.1 - Tela de Login).
+### Session 6: AI Directive Adjustment (AGENTS.md)
+* **Date:** May 09, 2026
+* **Summary of Actions:**
+  * Update of the Universal Directive in `AGENTS.md` to force English in all interactions (including commits) and demand extreme conciseness.
+* **Validation:**
+  * Rule applied and already used in the next commit.
+* **Pending Items:**
+  * Resume Phase 2 (T2.2).
 
 ---
 
-### Sessão 8: Finalização da Fase 2 (CRUDs)
-* **Data:** 10 de Maio de 2026
-* **Resumo das Ações:**
-  * Conclusão da Fase 2 (`T2.2`, `T2.3`, `T2.4`) com a criação dos repositórios de acesso a dados.
-  * Criação do `UserRepository.js` para gerenciar usuários (operações de CRUD e login).
-  * Criação do `ProductRepository.js` para gerenciar produtos, incluindo a validação lógica de permitir múltiplas entradas com o mesmo nome para validades diferentes, e métodos auxiliares para incrementar/decrementar quantidade.
-* **Validação:**
-  * Códigos implementados seguindo a API assíncrona/síncrona moderna do `expo-sqlite` (métodos `runAsync`, `getAllAsync`, `getFirstAsync`).
-* **Pendências:**
-  * Iniciar a Fase 3 (T3.1 - Tela de Login).
+### Session 7: Skills Documentation (SKILLS.md)
+* **Date:** May 09, 2026
+* **Summary of Actions:**
+  * Creation of **Skill 2** for `atomic_commit_cross`.
+  * Goal: Standardize the chained commit command using `&&` for compatibility with PowerShell/Windows/Linux and ensure the use of English in messages.
+* **Validation:**
+  * Command tested and functional in previous sessions.
+* **Pending Items:**
+  * Start Phase 3 (T3.1 - Login Screen).
 
 ---
 
-### Sessão 9: Início da Fase 3 (T3.1)
-* **Data:** 12 de Maio de 2026
-* **Agente:** Desenvolvedor UI/Frontend
-* **Tarefas Concluídas:** T3.1
-* **Resumo das Ações:**
-  * Criação da `LoginScreen.js` em `src/screens/`.
-  * Implementação de UI moderna (Dark Mode) com `SafeAreaView` e `KeyboardAvoidingView`.
-  * Integração com `UserRepository.login` para autenticação via SQLite.
-  * Atualização do `App.js` para definir a `LoginScreen` como tela inicial da aplicação.
-* **Validação:**
-  * **Técnica:** Seguindo `HARNESS.md`, a interface é responsiva e utiliza componentes homologados. **Validação Técnica Concluída (Skill 3)**.
-  * **Negócio:** Atende ao RF01, permitindo acesso apenas via credenciais válidas no banco local.
-* **Pendências:**
-  * Desenvolver Tela de Cadastro de Usuários (T3.2).
+### Session 8: Phase 2 Finalization (CRUDs)
+* **Date:** May 10, 2026
+* **Summary of Actions:**
+  * Completion of Phase 2 (`T2.2`, `T2.3`, `T2.4`) with the creation of data access repositories.
+  * Creation of `UserRepository.js` to manage users (CRUD and login operations).
+  * Creation of `ProductRepository.js` to manage products, including the logical validation of allowing multiple entries with the same name for different expiration dates, and auxiliary methods to increment/decrement quantity.
+* **Validation:**
+  * Codes implemented following the modern asynchronous/synchronous API of `expo-sqlite` (`runAsync`, `getAllAsync`, `getFirstAsync` methods).
+* **Pending Items:**
+  * Start Phase 3 (T3.1 - Login Screen).
+
+---
+
+### Session 9: Start of Phase 3 (T3.1)
+* **Date:** May 12, 2026
+* **Agent:** UI/Frontend Developer
+* **Completed Tasks:** T3.1
+* **Summary of Actions:**
+  * Creation of `LoginScreen.js` in `src/screens/`.
+  * Implementation of modern UI (Dark Mode) with `SafeAreaView` and `KeyboardAvoidingView`.
+  * Integration with `UserRepository.login` for authentication via SQLite.
+  * Update of `App.js` to set `LoginScreen` as the initial screen of the application.
+* **Validation:**
+  * **Technical:** Following `HARNESS.md`, the interface is responsive and uses approved components. **Technical Validation Completed (Skill 3)**.
+  * **Business:** Meets FR01, allowing access only via valid credentials in the local database.
+* **Pending Items:**
+  * Develop User Registration Screen (T3.2).

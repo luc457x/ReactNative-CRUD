@@ -1,26 +1,32 @@
-## 1. Comandos do Ambiente de Execução
-Como este é um projeto React Native (preferencialmente utilizando Expo), os comandos oficiais para a IA ou para o desenvolvedor executarem no terminal são:
+---
+name: technical_harness
+description: Technical acceptance criteria, approved commands, and code quality/cleanliness standards.
+---
 
-* **Iniciar o servidor (Metro Bundler):** `npx expo start`
-* **Rodar no emulador Android:** (Com o expo rodando) Pressione `a`
-* **Limpar cache do bundler (Resolver erros de build):** `npx expo start -c`
-* **Instalar novas dependências:** `npx expo install <pacote>` (Sempre usar `expo install` no lugar de `npm install` para pacotes nativos).
+# Technical Harness (HARNESS.md)
 
-## 2. Critérios de Aceite Técnicos (Checklist de Qualidade)
-Todo código produzido deve passar por esta validação técnica antes da entrega:
-1. **Build íntegro:** O código não pode quebrar o Metro Bundler ou o build do Expo.
-2. **Limpeza:** Remoção de `console.log()` de debug e comentários de rascunho.
-3. **Responsividade (RNF03):** Uso correto de Flexbox e `SafeAreaView` para compatibilidade com diferentes tamanhos de tela.
-4. **Padrões de Erro:** Verificação se o tratamento de erros segue os padrões da Seção 4.
+As this is a React Native project (preferably using Expo), the official commands for the AI or developer to execute in the terminal are:
 
-## 3. Dependências Homologadas (Stack Padrão)
-Para evitar que diferentes Agentes instalem bibliotecas que fazem a mesma coisa (ex: um instala `axios` e outro instala `fetch`), o projeto usará estritamente:
+* **Start the server (Metro Bundler):** `npx expo start`
+* **Run on Android emulator:** (With expo running) Press `a`
+* **Clear bundler cache (Resolve build errors):** `npx expo start -c`
+* **Install new dependencies:** `npx expo install <package>` (Always use `expo install` instead of `npm install` for native packages).
 
-* **Navegação:** `@react-navigation/native` e `@react-navigation/native-stack`
-* **Banco de Dados:** `expo-sqlite`
-* **Ícones:** `@expo/vector-icons`
-* **Requisições externas:** `fetch` API nativo do JS (se aplicável no futuro).
+## 2. Technical Acceptance Criteria (Quality Checklist)
+All code produced must pass this technical validation before delivery:
+1. **Intact Build:** The code must not break the Metro Bundler or the Expo build.
+2. **Cleanliness:** Removal of debug `console.log()` and draft comments.
+3. **Responsiveness (NFR03):** Correct use of Flexbox and `SafeAreaView` for compatibility with different screen sizes.
+4. **Error Patterns:** Verification if error handling follows the standards in Section 4.
 
-## 4. Depuração do Banco de Dados SQLite
-Como o banco rodará embutido no celular:
-* Tratamento de Erros: Todas as funções de CRUD no repositório devem envolver queries em blocos `try/catch` e imprimir o erro no console para facilitar a depuração via Metro Bundler.
+## 3. Approved Dependencies (Standard Stack)
+To prevent different Agents from installing libraries that do the same thing (e.g., one installs `axios` and another installs `fetch`), the project will strictly use:
+
+* **Navigation:** `@react-navigation/native` and `@react-navigation/native-stack`
+* **Database:** `expo-sqlite`
+* **Icons:** `@expo/vector-icons`
+* **External requests:** Native JS `fetch` API (if applicable in the future).
+
+## 4. SQLite Database Debugging
+As the database will run embedded in the phone:
+* Error Handling: All CRUD functions in the repository must wrap queries in `try/catch` blocks and print the error to the console to facilitate debugging via Metro Bundler.

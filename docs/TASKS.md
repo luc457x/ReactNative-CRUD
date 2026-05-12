@@ -1,37 +1,42 @@
-# Plano de Tarefas (TASKS.md)
+---
+name: tasks_roadmap
+description: Granular roadmap divided into phases and actionable tasks for project development.
+---
 
-## Fase 1: Configuração do Projeto e Infraestrutura
-- [x] **T1.1:** Inicializar o projeto em React Native (com Expo ou Bare Workflow).
-- [x] **T1.2:** Configurar navegação base com `react-navigation`.
-- [x] **T1.3:** Instalar e configurar biblioteca do SQLite (`expo-sqlite` ou `react-native-sqlite-storage`).
-- [x] **T1.4:** Criar estrutura de pastas do projeto (ex: `/src/components`, `/src/screens`, `/src/database`, `/src/utils`).
+# Task Plan (TASKS.md)
 
-## Fase 2: Banco de Dados e Modelagem (Ref: RNF02, Diagrama de Classes)
-- [x] **T2.1:** Criar script de inicialização do banco de dados (tabelas `Usuarios` e `Produtos`).
-  - [x] **T2.1.1:** Criar usuário `admin` padrão no SQLite (seed) caso a tabela esteja vazia. A senha será `admin` e ele terá permissão de `admin`, para ser autenticado normalmente pelo app.
-- [x] **T2.2:** Implementar repositório (CRUD) para Usuários.
-- [x] **T2.3:** Implementar repositório (CRUD) para Produtos.
-- [x] **T2.4:** Implementar regras de negócio no nível de dados:
-  - [x] Garantir ID único (Auto-increment/UUID).
-  - [x] Permitir a inserção de produtos com o mesmo nome como entradas separadas no banco, desde que tenham validades diferentes.
+## Phase 1: Project Setup and Infrastructure
+- [x] **T1.1:** Initialize the project in React Native (using Expo or Bare Workflow).
+- [x] **T1.2:** Configure base navigation with `react-navigation`.
+- [x] **T1.3:** Install and configure the SQLite library (`expo-sqlite` or `react-native-sqlite-storage`).
+- [x] **T1.4:** Create the project folder structure (e.g., `/src/components`, `/src/screens`, `/src/database`, `/src/utils`).
 
-## Fase 3: Telas de Acesso e Usuários
-- [x] **T3.1:** Desenvolver Tela de Login (Ref: RF01).
-- [ ] **T3.2:** Desenvolver Tela de Cadastro de Usuários/Funcionários (Ref: RF05).
-- [ ] **T3.3:** Integrar telas de acesso com o repositório SQLite.
+## Phase 2: Database and Modeling (Ref: NFR02, Class Diagram)
+- [x] **T2.1:** Create database initialization script (`Users` and `Products` tables).
+  - [x] **T2.1.1:** Create default `admin` user in SQLite (seed) if the table is empty. The password will be `admin` and it will have `admin` permission, to be normally authenticated by the app.
+- [x] **T2.2:** Implement repository (CRUD) for Users.
+- [x] **T2.3:** Implement repository (CRUD) for Products.
+- [x] **T2.4:** Implement business rules at the data level:
+  - [x] Ensure unique ID (Auto-increment/UUID).
+  - [x] Allow insertion of products with the same name as separate entries in the database, provided they have different expiration dates.
 
-## Fase 4: Gestão de Produtos (Ref: RF02)
-- [ ] **T4.1:** Desenvolver Tela/Modal de Cadastro de Produto (Inputs: Nome, Categoria, Qtd, Preço, Validade).
-- [ ] **T4.2:** Desenvolver lógica de Edição de Produto existente.
-- [ ] **T4.3:** Integrar exclusão de Produto.
+## Phase 3: Access and User Screens
+- [x] **T3.1:** Develop Login Screen (Ref: FR01).
+- [ ] **T3.2:** Develop User/Employee Registration Screen (Ref: FR05).
+- [ ] **T3.3:** Integrate access screens with the SQLite repository.
 
-## Fase 5: Visão Geral e Controle de Estoque (Ref: RF03, RF04)
-- [ ] **T5.1:** Desenvolver Tela Principal (Dashboard) com listagem simples dos produtos em estoque (agrupando itens pelo nome, mostrando apenas nome, categoria, preço e quantidade total).
-  - [ ] **T5.1.1:** Ao clicar em um produto agrupado, exibir uma tela com mais detalhes mostrando as diferentes entradas desse mesmo produto separadamente e mostrando os dados completos.
-- [ ] **T5.2:** Implementar botões de incremento (+) e decremento (-) diretamente na listagem ou painel rápido.
-- [ ] **T5.3:** Conectar a listagem ao banco para refletir as alterações "imediatamente" (Ref: Regra de Negócio).
+## Phase 4: Product Management (Ref: FR02)
+- [ ] **T4.1:** Develop Product Registration Screen/Modal (Inputs: Name, Category, Qty, Price, Expiration).
+- [ ] **T4.2:** Develop logic for Editing existing Product.
+- [ ] **T4.3:** Integrate Product deletion.
 
-## Fase 6: Ajustes Finais e UX (Ref: RNF03)
-- [ ] **T6.1:** Refinar o estilo para garantir responsividade (celulares e tablets).
-- [ ] **T6.2:** Testes de fluxo offline e persistência.
-- [ ] **T6.3:** Validação final cruzada com `SPEC.md` e `UML/use_case.puml`.
+## Phase 5: Overview and Inventory Control (Ref: FR03, FR04)
+- [ ] **T5.1:** Develop Main Screen (Dashboard) with a simple listing of products in stock (grouping items by name, showing only name, category, price, and total quantity).
+  - [ ] **T5.1.1:** When clicking on a grouped product, display a screen with more details showing the different entries of that same product separately and showing full data.
+- [ ] **T5.2:** Implement increment (+) and decrement (-) buttons directly in the listing or quick panel.
+- [ ] **T5.3:** Connect the listing to the database to reflect changes "immediately" (Ref: Business Rule).
+
+## Phase 6: Final Adjustments and UX (Ref: NFR03)
+- [ ] **T6.1:** Refine style to ensure responsiveness (phones and tablets).
+- [ ] **T6.2:** Offline flow and persistence tests.
+- [ ] **T6.3:** Final cross-validation with `SPEC.md` and `UML/use_case.puml`.

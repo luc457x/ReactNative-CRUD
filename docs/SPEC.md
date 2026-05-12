@@ -1,49 +1,56 @@
-Objetivos do Projeto
-    • Entregar um sistema de controle de estoque digital desenvolvido em React Native com JS e banco de dados SQLite.
-    • Permitir login de usuários, cadastro de produtos, controle de quantidades e visão geral do estoque.
+---
+name: project_spec
+description: Technical and business specification, including functional requirements, non-functional requirements, and business rules.
+---
 
-Escopo
-    • Desenvolvimento de um aplicativo mobile multiplataforma (Android e iOS).
-    • Integração com banco de dados SQLite.
-    • Interface simples e intuitiva para funcionários.
-    • Funcionalidades de login, cadastro, exclusão e atualização de produtos.
-    • Controle de quantidade de estoque com botões de incremento/decremento.
+# Project Specification (SPEC.md)
 
-Descrição do Problema
-O controle de estoque atual é feito manualmente em papel, sujeito a erros e perdas de informação. Não há relatórios claros, dificultando a reposição e aumentando perdas por vencimento. O projeto busca resolver essas falhas com uma solução digital.
+Project Goals
+• Deliver a digital inventory control system developed in React Native with JS and SQLite database.
+• Allow user login, product registration, quantity control, and stock overview.
 
-Descrição da Solução Proposta
-Será desenvolvido um aplicativo em React Native com JS e com banco de dados SQLite. O sistema terá:
-    • Tela de login para usuários cadastrados.
-    • Cadastro de produtos com atributos: ID, nome, categoria, quantidade, preço unitário e validade.
-    • Visão geral do estoque com listagem de produtos.
-    • Botões para aumentar/diminuir quantidade.
-    • Exclusão e atualização de produtos.
-    • Interface simples e intuitiva para uso em tablets ou celulares.
+Scope
+• Development of a cross-platform mobile application (Android and iOS).
+• Integration with SQLite database.
+• Simple and intuitive interface for employees.
+• Features for login, registration, deletion, and update of products.
+• Stock quantity control with increment/decrement buttons.
 
-Requisitos Funcionais
-    • RF01: Permitir o login de usuários cadastrados.
-    • RF02: Permitir o cadastro, atualização e exclusão de produtos (CRUD completo).
-    • RF03: Exibir visão geral do estoque com listagem de todos os produtos.
-    • RF04: Oferecer botões de acesso rápido para incrementar/decrementar a quantidade de um produto.
-    • RF05: Permitir o cadastro de usuários administradores/funcionários para acesso ao sistema.
+Problem Description
+The current inventory control is done manually on paper, prone to errors and loss of information. There are no clear reports, making replacement difficult and increasing losses due to expiration. The project seeks to solve these flaws with a digital solution.
 
-Regras de Negócio
-    • Cada produto deve ter ID único.
-    • Produtos com mesmo nome mas validade diferente devem ser registrados separadamente.
-    • Usuários devem estar cadastrados para acessar o sistema.
-    • Alterações no estoque devem ser registradas imediatamente no banco de dados.
+Proposed Solution Description
+An application will be developed in React Native with JS and with SQLite database. The system will have:
+• Login screen for registered users.
+• Product registration with attributes: ID, name, category, quantity, unit price, and expiration date.
+• Stock overview with product listing.
+• Buttons to increase/decrease quantity.
+• Deletion and update of products.
+• Simple and intuitive interface for use on tablets or phones.
 
-Diagrama de Casos de Uso (Visão Geral)
-*(Veja o arquivo `UML/use_case.puml` para o diagrama detalhado)*
+Functional Requirements
+• FR01: Allow login for registered users.
+• FR02: Allow registration, update, and deletion of products (Full CRUD).
+• FR03: Display stock overview with listing of all products.
+• FR04: Offer quick access buttons to increment/decrement the quantity of a product.
+• FR05: Allow registration of administrators/employees for system access.
 
-Diagrama de Classes
-*(Veja o arquivo `UML/class.puml` para o diagrama de classes detalhado)*
+Business Rules
+• Each product must have a unique ID.
+• Products with the same name but different expiration dates must be registered separately.
+• Users must be registered to access the system.
+• Changes in stock must be recorded immediately in the database.
 
-Requisitos Não Funcionais
-    • RNF01: O sistema deve ser desenvolvido em React Native utilizando JavaScript.
-    • RNF02: O banco de dados deve ser SQLite embutido (funcionamento local/offline).
-    • RNF03: A interface deve ser multiplataforma (Android e iOS) e adaptável a tablets e celulares.
+Use Case Diagram (Overview)
+*(See the `UML/use_case.puml` file for the detailed diagram)*
 
-Restrições do Projeto
-    • Não haverá integração externa com sistemas de fornecedores ou emissão de notas fiscais.
+Class Diagram
+*(See the `UML/class.puml` file for the detailed class diagram)*
+
+Non-Functional Requirements
+• NFR01: The system must be developed in React Native using JavaScript.
+• NFR02: The database must be embedded SQLite (local/offline operation).
+• NFR03: The interface must be cross-platform (Android and iOS) and adaptable to tablets and phones.
+
+Project Constraints
+• There will be no external integration with supplier systems or issuance of invoices.
