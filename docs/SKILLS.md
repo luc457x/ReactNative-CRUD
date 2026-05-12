@@ -34,3 +34,27 @@ Garantir que as alterações sejam salvas de forma consistente em qualquer Siste
    - Exemplo: `git add arquivo1.js docs/PROGRESS.md && git commit -m "feat: descrição da tarefa"`
 3. **Idioma:** Sempre redigir a mensagem de commit em **Português-br**, conforme a Diretriz Universal no `AGENTS.md`.
 4. **Verificar Sucesso:** Confirmar a saída do comando para garantir que o commit foi criado com sucesso.
+
+---
+
+## Skill 3: Validação de Qualidade QA (`qa_protocol`)
+
+**Quando usar:** 
+Obrigatoriamente antes de finalizar qualquer tarefa no `TASKS.md`, durante a fase de "Validação Técnica" do Protocolo de Conclusão de Tarefa.
+
+**Objetivo:** 
+Garantir que o código respeite os Critérios de Aceite Técnicos do `HARNESS.md` e as Regras de Negócio do `SPEC.md`.
+
+**Passo a passo que a IA deve executar:**
+1. **Check de Build:** Verificar se as alterações não geram erros de importação ou sintaxe.
+2. **Sanitização de Código:** 
+   - Identificar e remover `console.log()` de depuração.
+   - Remover comentários de "TODO" ou rascunhos que não agregam à documentação.
+3. **Inspeção Visual e Responsividade:** 
+   - Verificar se novas telas usam `SafeAreaView`.
+   - Garantir que layouts usem `flex` em vez de larguras/alturas fixas que quebrem em tablets (RNF03).
+4. **Validação de Persistência (SQLite):**
+   - Confirmar que todas as chamadas ao banco de dados estão protegidas por blocos `try/catch`.
+   - Garantir que erros de banco sejam logados no terminal para debug.
+5. **Cross-Check de Regras:** Validar se a lógica implementada não viola as Regras de Negócio (ex: ID único, validação de data, etc.).
+6. **Registro:** Incluir a nota "Validação Técnica Concluída (Skill 3)" no log da sessão no `PROGRESS.md`.
