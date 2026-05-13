@@ -216,7 +216,6 @@ description: Historical log of sessions, completed tasks, and current project st
 ### Session 12: AI Engineering Documentation Refactor
 * **Date:** May 12, 2026
 * **Agent:** QA / Architect Agent
-* **Git Tag:** `session-12`
 * **Summary of Actions:**
   * **Documentation Structure:** Standardized all engineering docs (`WORKFLOW.md`, `SPEC.md`, `HARNESS.md`) with section headers and blank lines to improve AI reasoning and attention.
   * **Token Optimization:** Implemented "Pattern Logic" in `SKILLS.md` and `AGENTS.md`, removing redundant absolute paths to save context tokens while maintaining discoverability.
@@ -233,7 +232,6 @@ description: Historical log of sessions, completed tasks, and current project st
 ### Session 13: Modular Documentation Cleanup
 * **Date:** May 12, 2026
 * **Agent:** QA / Architect Agent
-* **Git Tag:** `session-13`
 * **Summary of Actions:**
   - **Metadata Cleanup:** Removed YAML front-matter from modular Skill files (`atomic_commit_cross`, `qa_protocol`, `context_aware_init`) to reduce token usage and follow the "Early Exit" logic.
   - **Tagging Protocol Refinement:** Updated **WORKFLOW.md** to specify that tagging should only occur on the **final commit** of a session.

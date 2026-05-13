@@ -25,4 +25,4 @@ Always explicitly declare when you are following a rule from this workflow (e.g.
 ## 5. Commit & Tagging Protocol
 Every completion of a task or session must be saved following the **atomic_commit_cross** skill.
 - **Requirement:** Commits must be atomic (one change per commit).
-- **Requirement:** The final commit of every session must be tagged as `session-XX` and recorded in **PROGRESS.md**.
+- **Requirement:** The final commit of every session recorded in **PROGRESS.md** must be tagged as `session-XX`.
