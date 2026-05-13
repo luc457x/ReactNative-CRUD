@@ -5,21 +5,21 @@ description: Technical and business specification, including functional requirem
 
 # Project Specification (SPEC.md)
 
-Project Goals
+## Project Goals
 • Deliver a digital inventory control system developed in React Native with JS and SQLite database.
 • Allow user login, product registration, quantity control, and stock overview.
 
-Scope
+## Scope
 • Development of a cross-platform mobile application (Android and iOS).
 • Integration with SQLite database.
 • Simple and intuitive interface for employees.
 • Features for login, registration, deletion, and update of products.
 • Stock quantity control with increment/decrement buttons.
 
-Problem Description
+## Problem Description
 The current inventory control is done manually on paper, prone to errors and loss of information. There are no clear reports, making replacement difficult and increasing losses due to expiration. The project seeks to solve these flaws with a digital solution.
 
-Proposed Solution Description
+## Proposed Solution Description
 An application will be developed in React Native with JS and with SQLite database. The system will have:
 • Login screen for registered users.
 • Product registration with attributes: ID, name, category, quantity, unit price, and expiration date.
@@ -52,5 +52,5 @@ Non-Functional Requirements
 • NFR02: The database must be embedded SQLite (local/offline operation).
 • NFR03: The interface must be cross-platform (Android and iOS) and adaptable to tablets and phones.
 
-Project Constraints
+## Project Constraints
 • There will be no external integration with supplier systems or issuance of invoices.

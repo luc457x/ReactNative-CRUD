@@ -210,3 +210,19 @@ description: Historical log of sessions, completed tasks, and current project st
   * **Business:** Meets FR05, allowing the creation of new system users directly from the app (for academic/testing purposes).
 * **Pending Items:**
   * Start Phase 4: Product Management (T4.1 - Product Registration).
+
+---
+
+### Session 12: AI Engineering Documentation Refactor
+* **Date:** May 12, 2026
+* **Agent:** QA / Architect Agent
+* **Summary of Actions:**
+  * **Documentation Structure:** Standardized all engineering docs (`WORKFLOW.md`, `SPEC.md`, `HARNESS.md`) with section headers and blank lines to improve AI reasoning and attention.
+  * **Token Optimization:** Implemented "Pattern Logic" in `SKILLS.md` and `AGENTS.md`, removing redundant absolute paths to save context tokens while maintaining discoverability.
+  * **Protocol Reinforcement:** Added the "Fundamental Rule" to `HARNESS.md` regarding the preservation of existing file conventions.
+  * **Integrity Rules:** Updated `AGENTS.md` with a mandatory directive to preserve the historical integrity of `PROGRESS.md`.
+  * **Harness Fixes:** Corrected section numbering and internal cross-references in `HARNESS.md`.
+* **Validation:**
+  * **Technical:** Verified all MD links (where kept) and structural headers. **Technical Validation Completed (Skill 3)**.
+* **Pending Items:**
+  * Resume Phase 4: Product Management (T4.1 - Product Registration).
