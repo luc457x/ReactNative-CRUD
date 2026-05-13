@@ -6,7 +6,7 @@ description: Historical log of sessions, completed tasks, and current project st
 # Progress Log (PROGRESS.md)
 
 ## Current Status Summary
-* **Current Status:** **Phase 3 COMPLETED** — Access and Registration screens implemented and integrated. Next step: Phase 4 (Product Management).
+* **Current Status:** **Phase 3 NEEDS FIXING** — "Register" screen must be acessibly only for logged admins.
 * **Last Commit/Update:** T3.2/T3.3 — Implementation of RegisterScreen and integration with UserRepository.
 
 ---
