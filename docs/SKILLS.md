@@ -15,5 +15,5 @@ Modular protocols are located in `docs/skills/<skill_name>/SKILL.md`.
 2. **atomic_commit_cross**
    - **Goal:** Atomic commit protocol (Cross-platform).
 
-3. **qa_protocol**
-   - **Goal:** QA validation (Business & Technical).
+3. **e2e_smoke_test**
+   - **Goal:** Generic E2E verification.
