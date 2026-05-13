@@ -1,9 +1,10 @@
-import db from './database';
+import { getDb } from './database';
 
 export const UserRepository = {
   // Creates a new user
   create: async (name, password, permission = 'user') => {
     try {
+      const db = getDb();
       const result = await db.runAsync(
         'INSERT INTO Users (name, password, permission) VALUES (?, ?, ?)',
         [name, password, permission]
@@ -18,6 +19,7 @@ export const UserRepository = {
   // Returns all users
   getAll: async () => {
     try {
+      const db = getDb();
       return await db.getAllAsync('SELECT * FROM Users');
     } catch (error) {
       console.error('Error fetching users:', error);
@@ -28,6 +30,7 @@ export const UserRepository = {
   // Returns a user by ID
   getById: async (id) => {
     try {
+      const db = getDb();
       return await db.getFirstAsync('SELECT * FROM Users WHERE id = ?', [id]);
     } catch (error) {
       console.error('Error fetching user by ID:', error);
@@ -38,6 +41,7 @@ export const UserRepository = {
   // Finds a user by name (useful for login/verification)
   getByName: async (name) => {
       try {
+          const db = getDb();
           return await db.getFirstAsync('SELECT * FROM Users WHERE name = ?', [name]);
       } catch (error) {
           console.error('Error fetching user by name:', error);
@@ -48,6 +52,7 @@ export const UserRepository = {
   // Authenticates a user
   login: async (name, password) => {
       try {
+          const db = getDb();
           return await db.getFirstAsync('SELECT * FROM Users WHERE name = ? AND password = ?', [name, password]);
       } catch (error) {
           console.error('Error authenticating user:', error);
@@ -58,6 +63,7 @@ export const UserRepository = {
   // Updates an existing user
   update: async (id, name, password, permission) => {
     try {
+      const db = getDb();
       await db.runAsync(
         'UPDATE Users SET name = ?, password = ?, permission = ? WHERE id = ?',
         [name, password, permission, id]
@@ -71,6 +77,7 @@ export const UserRepository = {
   // Deletes a user
   delete: async (id) => {
     try {
+      const db = getDb();
       await db.runAsync('DELETE FROM Users WHERE id = ?', [id]);
     } catch (error) {
       console.error('Error deleting user:', error);

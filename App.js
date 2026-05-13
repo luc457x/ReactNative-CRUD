@@ -24,17 +24,35 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [dbInitialized, setDbInitialized] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     async function setup() {
-      await initDatabase();
-      setDbInitialized(true);
+      try {
+        await initDatabase();
+        setDbInitialized(true);
+      } catch (err) {
+        setError(err.message);
+      }
     }
     setup();
   }, []);
 
+  if (error) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.title}>Erro de Inicialização</Text>
+        <Text style={styles.info}>{error}</Text>
+      </View>
+    );
+  }
+
   if (!dbInitialized) {
-    return null;
+    return (
+      <View style={styles.container}>
+        <Text style={styles.info}>Inicializando banco de dados...</Text>
+      </View>
+    );
   }
 
   return (

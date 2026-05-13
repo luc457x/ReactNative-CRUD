@@ -1,14 +1,16 @@
 import * as SQLite from 'expo-sqlite';
 
-// Open (or create) the local database.
-// The inventory.db file will be in the app's private directory on the device.
-const db = SQLite.openDatabaseSync('inventory.db');
+let db = null;
 
 export const initDatabase = async () => {
   try {
+    if (!db) {
+      db = await SQLite.openDatabaseAsync('inventory.db');
+    }
+
+    // PRAGMA journal_mode = WAL; is often not supported on web and can cause issues with SharedArrayBuffer.
+    // Removing it for now to improve web compatibility.
     await db.execAsync(`
-      PRAGMA journal_mode = WAL;
-      
       CREATE TABLE IF NOT EXISTS Users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT NOT NULL,
@@ -35,11 +37,18 @@ export const initDatabase = async () => {
         'INSERT INTO Users (name, password, permission) VALUES (?, ?, ?)',
         ['admin', 'admin', 'admin']
       );
-      console.log('Admin user seeded successfully!');
     }
   } catch (error) {
     console.error('Error initializing database:', error);
+    throw error;
   }
+};
+
+export const getDb = () => {
+  if (!db) {
+    throw new Error('Database not initialized. Call initDatabase first.');
+  }
+  return db;
 };
 
 export default db;
