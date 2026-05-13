@@ -1,7 +1,7 @@
-# Atomic Commit Cross-Platform Skill
+# Atomic Commit Skill
 
 ## When to use
-After completing a task or session, following the rules in **WORKFLOW.md**, or when explicitly asked to commit changes.
+When marking a task as completed or at the end of a session, following the rules in **WORKFLOW.md**, or when explicitly asked to commit changes.
 
 ## Goal
 Ensure that changes are saved consistently, organized by priority.

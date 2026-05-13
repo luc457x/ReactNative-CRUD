@@ -15,7 +15,7 @@ As this is a React Native project (preferably using Expo), the official commands
 * **Run on Android emulator:** (With expo running) Press `a`
 * **Clear bundler cache (Resolve build errors):** `npx expo start -c`
 * **Install new dependencies:** `npx expo install <package>` (Always use `expo install` instead of `npm install` for native packages).
-* **Git Operations:** **Always** use the `atomic_commit_cross` skill for any commit. Commits must be atomic (separating infrastructure, logic, and documentation).
+* **Git Operations:** **Always** use the `atomic_commit` skill for any commit. Commits must be atomic (separating infrastructure, logic, and documentation).
 
 ## 3. QA Protocol & Technical Acceptance
 All code produced must pass this mandatory validation before marking a task as completed:

@@ -14,6 +14,7 @@ This project is guided by a set of Markdown files designed to instruct, restrict
 * **TASKS.md**: The roadmap. Breaks SPEC.md into actionable granular steps.
 * **HARNESS.md**: The technical "rails". Defines allowed terminal commands, approved dependencies, and testing rules.
 * **PROGRESS.md**: The logbook. Keeps track of what has been done and records pending items.
+* **WORKFLOW.md**: The operating manual. Defines protocols for task lifecycle and communication.
 * **AGENTS.md** (This file — root): The AI's HR. Defines which persona and model to use for different parts of TASKS.md.
 * **SKILLS.md**: The spellbook. Maps step-by-step standard processes for consistent execution.
 * **UML/**: Directory containing PlantUML diagrams (use_case.puml, class.puml).
@@ -21,9 +22,7 @@ This project is guided by a set of Markdown files designed to instruct, restrict
 ## Universal Workflow Directive (Mandatory)
 > **ATTENTION TO ALL AGENTS:**
 1. **Always** write in English (including commits and logs), unless requested otherwise. Be as **concise** as possible.
-2. **Always** when asked to start or complete a task, consult **WORKFLOW.md** for mandatory guidelines.
-3. **Never** remove or edit any section in existing sessions in **PROGRESS.md**, only append new sessions.
----
+2. **Workflow**: Consult **WORKFLOW.md** only when performing active changes (editing/removing files or documentation). For passive consultation or research, it is optional.
 
 ## 1. Architect and Backend Agent (Senior)
 * **Complexity/Priority:** High (System Core)

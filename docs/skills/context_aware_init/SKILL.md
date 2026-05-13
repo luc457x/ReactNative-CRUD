@@ -12,4 +12,4 @@ Establish a technical foundation that is pre-optimized for the specific tech sta
 3. **Optimized Ignore**: 
    - Create a `.gitignore` covering standard IDEs and build folders.
    - Create a `.agentignore` to hide `node_modules` and binary builds from the AI.
-4. **Git Initialization**: `git init` and initial commit following the `atomic_commit_cross` standard.
+4. **Git Initialization**: `git init` and initial commit following the `atomic_commit` standard.
