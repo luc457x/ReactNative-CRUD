@@ -7,7 +7,7 @@ description: Defines the roles, responsibilities, and suggested models for the A
 
 ## AI Engineering Documentation Structure
 
-> **Location:** All AI engineering documents (except this file) are centralized in **`/docs`**. `AGENTS.md` remains at the root so that tools and rule systems find it automatically.
+> **Location:** All AI engineering documents (except this file) are centralized in **`/.agents`**. `AGENTS.md` remains at the root so that tools and rule systems find it automatically.
 
 This project is guided by a set of Markdown files designed to instruct, restrict, and guide LLMs during development:
 * **SPEC.md**: The scope's brain. Contains business rules, FRs, NFRs, and links to UML diagrams.
