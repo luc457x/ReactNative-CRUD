@@ -1,8 +1,3 @@
----
-name: atomic_commit_cross
-description: Protocol for performing atomic commits, organized by priority and compatible with multiple operating systems (including legacy PowerShell).
----
-
 # Atomic Commit Cross-Platform Skill
 
 ## When to use
@@ -14,9 +9,6 @@ Ensure that changes are saved consistently, organized by priority, and compatibl
 ## Step by step
 1. **Priority Analysis**: Evaluate changes and separate them into atomic blocks. Always prioritize functional code and business rules (Core) before infrastructure or documentation commits.
 2. **List Changes**: Identify which files belong to each defined priority block.
-3. **Commit Command (Compatibility)**:
-   - **Standard**: Use the `&&` operator.
-   - **PowerShell Workaround**: Use the `;` separator if the environment uses PowerShell < 7.
+3. **Execution**: Execute the commit command using the appropriate syntax for the current shell (see `/examples/COMMIT_EXAMPLES.md`).
 4. **Language**: Always write the commit message in **English**.
-5. **Session Tagging**: After the commit, create a tag if it's the end of a session: `git tag session-XX`.
-6. **Verify Success**: Confirm command output before starting the next block.
+5. **Verify Success**: Confirm command output before starting the next block.

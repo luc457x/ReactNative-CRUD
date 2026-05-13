@@ -1,8 +1,3 @@
----
-name: qa_protocol
-description: Performs technical and business quality assurance (QA) validation before the completion of any roadmap task.
----
-
 # QA Protocol Skill
 
 ## When to use

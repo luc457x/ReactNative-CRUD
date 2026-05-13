@@ -1,18 +1,15 @@
----
-name: context_aware_init
-description: Initializes the Git repository and configures .gitignore intelligently based on project technologies (SPEC.md and HARNESS.md).
----
-
-# Context Aware Initialization Skill
+# Context-Aware Initialization Skill
 
 ## When to use
-At the beginning of any foundation phase of a project, right after the planning phase (Phase 0), or when explicitly requested to prepare the ground for versioning.
+At the very beginning of a project or when a specific stack-aware configuration (like `.gitignore` or repository structure) needs to be initialized.
 
 ## Goal
-Ensure that versioning and file shielding are done intelligently and adapted to the tech stack defined in the documentation, before starting to write code.
+Establish a technical foundation that is pre-optimized for the specific tech stack (e.g., React Native + SQLite) and AI-friendly (with `.agentignore`).
 
 ## Step by step
-1. **Read Context**: Read the `SPEC.md` and `HARNESS.md` files (both in `docs/`) to identify all project technologies (e.g., React Native, Expo, SQLite, Python, Node, etc.).
-2. **Create Customized .gitignore**: Generate a robust `.gitignore` that excludes dependencies, builds, DBs, and IDE files.
-3. **Initialize Repository**: Execute `git init` in the terminal.
-4. **Report**: Inform the user that the repository was created in synergy with the required tech stack.
+1. **Stack Detection**: Identify the languages and frameworks (e.g., JS, React Native, Expo).
+2. **Standard Structure**: Create the documentation folder (`/docs`) and source folder (`/src`).
+3. **Optimized Ignore**: 
+   - Create a `.gitignore` covering standard IDEs and build folders.
+   - Create a `.agentignore` to hide `node_modules` and binary builds from the AI.
+4. **Git Initialization**: `git init` and initial commit following the `atomic_commit_cross` standard.
