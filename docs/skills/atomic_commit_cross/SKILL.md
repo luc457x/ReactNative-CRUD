@@ -1,14 +1,13 @@
 # Atomic Commit Cross-Platform Skill
 
 ## When to use
-Upon completing a task, subtask, or phase, following the granularity guidelines of `WORKFLOW.md`.
+After completing a task or session, following the rules in **WORKFLOW.md**, or when explicitly asked to commit changes.
 
 ## Goal
-Ensure that changes are saved consistently, organized by priority, and compatible with any Operating System (Windows, Linux, macOS).
+Ensure that changes are saved consistently, organized by priority.
 
 ## Step by step
-1. **Priority Analysis**: Evaluate changes and separate them into atomic blocks. Always prioritize functional code and business rules (Core) before infrastructure or documentation commits.
-2. **List Changes**: Identify which files belong to each defined priority block.
-3. **Execution**: Execute the commit command using the appropriate syntax for the current shell (see `/examples/COMMIT_EXAMPLES.md`).
-4. **Language**: Always write the commit message in **English**.
-5. **Verify Success**: Confirm command output before starting the next block.
+1. **Priority Analysis**: Group changes into atomic blocks (Core logic > Infrastructure > Docs).
+2. **Execution**: Use the correct shell syntax (see `examples/COMMIT_EXAMPLES.md`).
+3. **Session Tagging**: If it is the final commit of a session, add the `session-XX` tag.
+4. **Verification**: Confirm success before moving to the next block or task.

@@ -238,7 +238,8 @@ description: Historical log of sessions, completed tasks, and current project st
   - **Metadata Cleanup:** Removed YAML front-matter from modular Skill files (`atomic_commit_cross`, `qa_protocol`, `context_aware_init`) to reduce token usage and follow the "Early Exit" logic.
   - **Tagging Protocol Refinement:** Updated **WORKFLOW.md** to specify that tagging should only occur on the **final commit** of a session.
   - **Modular Examples:** Created a dedicated examples file for commit commands to keep the main skill file procedural and lean.
+  - **De-duplication:** Refactored **WORKFLOW.md** and **atomic_commit_cross** to remove redundant explanations, achieving ~50% reduction in token footprint for these files.
 * **Validation:**
-  * **Technical:** Verified that only Core docs retain metadata for semantic search optimization. **Technical Validation Completed (Skill 3)**.
+  * **Technical:** Verified structural integrity and cross-references. **Technical Validation Completed (Skill 3)**.
 * **Pending Items:**
   * Resume Phase 4: Product Management (T4.1 - Product Registration).
