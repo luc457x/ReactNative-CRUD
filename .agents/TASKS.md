@@ -24,6 +24,7 @@ description: Granular roadmap divided into phases and actionable tasks for proje
 - [x] **T3.1:** Develop Login Screen (Ref: FR01).
 - [x] **T3.2:** Develop User/Employee Registration Screen (Ref: FR05).
 - [x] **T3.3:** Integrate access screens with the SQLite repository.
+- [ ] **T3.4:** Fix: Make "Register" screen only accessible for logged admins.
 
 ## Phase 4: Product Management (Ref: FR02)
 - [ ] **T4.1:** Develop Product Registration Screen/Modal (Inputs: Name, Category, Qty, Price, Expiration).

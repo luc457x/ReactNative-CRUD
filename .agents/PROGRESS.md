@@ -257,6 +257,6 @@ description: Historical log of sessions, completed tasks, and current project st
   - **Folder Rename:** Renamed `docs/` to `.agents/` to avoid conflicts.
   - **Directive Refinement:** Optimized `AGENTS.md` and `WORKFLOW.md` to distinguish between consultation and modification modes, ensuring higher efficiency and historical integrity.
 * **Validation:**
-  - **Technical:** Verified the fix using `browser_subagent`, confirming the Login screen is fully functional on Web. **Technical Validation Completed (Skill 3)**.
+  - **Technical:** Verified the fix using `browser_subagent`, confirming the Login screen is fully functional on Web. **Technical Validation Completed (Skill 3)**. Verified that the login screen has a "registration" button that it shouldn't have since only logged admins should be able to register new users, this should be fixed in the next sessions. Also verified that UI must have be centered and have fixed width so it dont get too big and works on landscape mode, the fix for this must be done in the last phase (Phase 6).
 * **Pending Items:**
-  - Start Phase 4: Product Management (T4.1 - Product Registration).
+  - Fix: "Register" screen must be acessibly only for logged admins.
