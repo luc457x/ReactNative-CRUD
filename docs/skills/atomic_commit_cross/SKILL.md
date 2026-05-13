@@ -18,4 +18,5 @@ Ensure that changes are saved consistently, organized by priority, and compatibl
    - **Standard**: Use the `&&` operator.
    - **PowerShell Workaround**: Use the `;` separator if the environment uses PowerShell < 7.
 4. **Language**: Always write the commit message in **English**.
-5. **Verify Success**: Confirm command output before starting the next block.
+5. **Session Tagging**: After the commit, create a tag if it's the end of a session: `git tag session-XX`.
+6. **Verify Success**: Confirm command output before starting the next block.

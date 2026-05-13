@@ -216,6 +216,7 @@ description: Historical log of sessions, completed tasks, and current project st
 ### Session 12: AI Engineering Documentation Refactor
 * **Date:** May 12, 2026
 * **Agent:** QA / Architect Agent
+* **Git Tag:** `session-12`
 * **Summary of Actions:**
   * **Documentation Structure:** Standardized all engineering docs (`WORKFLOW.md`, `SPEC.md`, `HARNESS.md`) with section headers and blank lines to improve AI reasoning and attention.
   * **Token Optimization:** Implemented "Pattern Logic" in `SKILLS.md` and `AGENTS.md`, removing redundant absolute paths to save context tokens while maintaining discoverability.

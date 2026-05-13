@@ -39,3 +39,6 @@ Separate commits for each specific change. If a new feature requires changing an
 
 ### Commit Messages
 Subject lines should be ~50 characters, being brief, meaningful, and informative about the main goal of the commit.
+
+### Session Tagging
+At the end of every session, after committing the changes, a Git tag must be created following the format `session-XX` (where XX is the session number). This tag must be recorded in the **PROGRESS.md** entry for that session to ensure absolute traceability.
