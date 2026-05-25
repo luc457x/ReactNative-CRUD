@@ -24,18 +24,18 @@ description: Granular roadmap divided into phases and actionable tasks for proje
 - [x] **T3.1:** Develop Login Screen (Ref: FR01).
 - [x] **T3.2:** Develop User/Employee Registration Screen (Ref: FR05).
 - [x] **T3.3:** Integrate access screens with the SQLite repository.
-- [ ] **T3.4:** Fix: Make "Register" screen only accessible for logged admins.
+- [x] **T3.4:** Fix: Make "Register" screen only accessible for logged admins.
 
 ## Phase 4: Product Management (Ref: FR02)
-- [ ] **T4.1:** Develop Product Registration Screen/Modal (Inputs: Name, Category, Qty, Price, Expiration).
-- [ ] **T4.2:** Develop logic for Editing existing Product.
-- [ ] **T4.3:** Integrate Product deletion.
+- [x] **T4.1:** Develop Product Registration Screen/Modal (Inputs: Name, Category, Qty, Price, Expiration).
+- [x] **T4.2:** Develop logic for Editing existing Product.
+- [x] **T4.3:** Integrate Product deletion.
 
 ## Phase 5: Overview and Inventory Control (Ref: FR03, FR04)
-- [ ] **T5.1:** Develop Main Screen (Dashboard) with a simple listing of products in stock (grouping items by name, showing only name, category, price, and total quantity).
-  - [ ] **T5.1.1:** When clicking on a grouped product, display a screen with more details showing the different entries of that same product separately and showing full data.
-- [ ] **T5.2:** Implement increment (+) and decrement (-) buttons directly in the listing or quick panel.
-- [ ] **T5.3:** Connect the listing to the database to reflect changes "immediately" (Ref: Business Rule).
+- [x] **T5.1:** Develop Main Screen (Dashboard) with a simple listing of products in stock (grouping items by name, showing only name, category, price, and total quantity).
+  - [x] **T5.1.1:** When clicking on a grouped product, display a screen with more details showing the different entries of that same product separately and showing full data.
+- [x] **T5.2:** Implement increment (+) and decrement (-) buttons directly in the listing or quick panel.
+- [x] **T5.3:** Connect the listing to the database to reflect changes "immediately" (Ref: Business Rule).
 
 ## Phase 6: Final Adjustments and UX (Ref: NFR03)
 - [ ] **T6.1:** Refine style to ensure responsiveness (phones and tablets).

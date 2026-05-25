@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
   StyleSheet,
   Text,
@@ -12,11 +12,13 @@ import {
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { UserRepository } from '../database/UserRepository';
+import { AuthContext } from '../../App';
 
 export default function LoginScreen({ navigation }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const { setUser } = useContext(AuthContext);
 
   const handleLogin = async () => {
     if (!username || !password) {
@@ -29,9 +31,8 @@ export default function LoginScreen({ navigation }) {
       const user = await UserRepository.login(username, password);
       
       if (user) {
-        // Successful login
-        // For now, navigates to Placeholder (will be Dashboard in Phase 5)
-        navigation.replace('Placeholder');
+        setUser(user);
+        navigation.replace('Dashboard');
       } else {
         Alert.alert('Falha na Autenticação', 'Usuário ou senha incorretos.');
       }
@@ -80,7 +81,7 @@ export default function LoginScreen({ navigation }) {
               onChangeText={setPassword}
               secureTextEntry
             />
-          </View>
+</View>
 
           <TouchableOpacity
             style={[styles.button, loading && styles.buttonDisabled]}
@@ -91,19 +92,9 @@ export default function LoginScreen({ navigation }) {
               {loading ? 'Entrando...' : 'Entrar'}
             </Text>
           </TouchableOpacity>
-
-          <TouchableOpacity
-            style={styles.registerLink}
-            onPress={() => navigation.navigate('Register')}
-          >
-            <Text style={styles.registerLinkText}>
-              Não tem uma conta? <Text style={styles.registerLinkBold}>Cadastre-se</Text>
-            </Text>
-          </TouchableOpacity>
         </View>
 
         <View style={styles.footer}>
-          <Text style={styles.footerText}>Sistema de Gestão Multidisciplinar IV</Text>
         </View>
       </KeyboardAvoidingView>
     </SafeAreaView>

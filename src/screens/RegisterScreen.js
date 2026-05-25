@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {
   StyleSheet,
   Text,
@@ -13,13 +13,25 @@ import {
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { UserRepository } from '../database/UserRepository';
+import { AuthContext } from '../../App';
 
 export default function RegisterScreen({ navigation }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [permission, setPermission] = useState('user'); // 'admin' or 'user'
+  const [permission, setPermission] = useState('user');
   const [loading, setLoading] = useState(false);
+  const { user } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (!user || user.permission !== 'admin') {
+      navigation.replace('Login');
+    }
+  }, [user, navigation]);
+
+  if (!user || user.permission !== 'admin') {
+    return null;
+  }
 
   const handleRegister = async () => {
     if (!username || !password || !confirmPassword) {
@@ -34,7 +46,6 @@ export default function RegisterScreen({ navigation }) {
 
     setLoading(true);
     try {
-      // Check if user already exists
       const existingUser = await UserRepository.getByName(username);
       if (existingUser) {
         Alert.alert('Erro', 'Este nome de usuário já está em uso.');
@@ -42,10 +53,10 @@ export default function RegisterScreen({ navigation }) {
         return;
       }
 
-      await UserRepository.create(username, password, permission);
-      Alert.alert('Sucesso', 'Usuário cadastrado com sucesso!', [
-        { text: 'OK', onPress: () => navigation.navigate('Login') }
-      ]);
+       await UserRepository.create(username, password, permission);
+       Alert.alert('Sucesso', 'Novo usuário cadastrado!', [
+         { text: 'OK', onPress: () => navigation.goBack() }
+       ]);
     } catch (error) {
       Alert.alert('Erro', 'Ocorreu um erro ao tentar cadastrar o usuário.');
     } finally {

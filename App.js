@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState, createContext } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
@@ -6,25 +6,18 @@ import { StyleSheet, Text, View } from 'react-native';
 import { initDatabase } from './src/database/database';
 import LoginScreen from './src/screens/LoginScreen';
 import RegisterScreen from './src/screens/RegisterScreen';
+import DashboardScreen from './src/screens/DashboardScreen';
+import ProductFormScreen from './src/screens/ProductFormScreen';
+import ProductDetailScreen from './src/screens/ProductDetailScreen';
 
-// --- Placeholder Screen (will be replaced in Phases 3-5) ---
-function PlaceholderScreen() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Painel de Controle</Text>
-      <Text style={styles.subtitle}>Login realizado com sucesso! ✅</Text>
-      <Text style={styles.info}>O Dashboard será implementado na Fase 5.</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+export const AuthContext = createContext(null);
 
-// --- Root Stack Navigator ---
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [dbInitialized, setDbInitialized] = useState(false);
   const [error, setError] = useState(null);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     async function setup() {
@@ -41,7 +34,7 @@ export default function App() {
   if (error) {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>Erro de Inicialização</Text>
+        <Text style={styles.title}>Initialization Error</Text>
         <Text style={styles.info}>{error}</Text>
       </View>
     );
@@ -50,22 +43,29 @@ export default function App() {
   if (!dbInitialized) {
     return (
       <View style={styles.container}>
-        <Text style={styles.info}>Inicializando banco de dados...</Text>
+        <Text style={styles.info}>Initializing database...</Text>
       </View>
     );
   }
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="Login"
-        screenOptions={{ headerShown: false }}
-      >
-        <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="Register" component={RegisterScreen} />
-        <Stack.Screen name="Placeholder" component={PlaceholderScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <AuthContext.Provider value={{ user, setUser }}>
+      <NavigationContainer>
+        <Stack.Navigator
+          initialRouteName="Login"
+          screenOptions={{ headerShown: false }}
+        >
+          <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen 
+            name="Register" 
+            component={RegisterScreen} 
+          />
+          <Stack.Screen name="Dashboard" component={DashboardScreen} />
+          <Stack.Screen name="ProductForm" component={ProductFormScreen} />
+          <Stack.Screen name="ProductDetail" component={ProductDetailScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </AuthContext.Provider>
   );
 }
 

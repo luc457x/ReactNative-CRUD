@@ -81,13 +81,26 @@ export const ProductRepository = {
   decrementQuantity: async (id, amount = 1) => {
     try {
       const db = getDb();
-      // Prevents quantity from becoming negative
       await db.runAsync(
         'UPDATE Products SET quantity = MAX(0, quantity - ?) WHERE id = ?',
         [amount, id]
       );
     } catch (error) {
       console.error('Error decrementing product quantity:', error);
+      throw error;
+    }
+  },
+
+  // Returns products by name and category (for grouped product details)
+  getByNameAndCategory: async (name, category) => {
+    try {
+      const db = getDb();
+      return await db.getAllAsync(
+        'SELECT * FROM Products WHERE name = ? AND category = ?',
+        [name, category]
+      );
+    } catch (error) {
+      console.error('Error fetching products by name and category:', error);
       throw error;
     }
   }
