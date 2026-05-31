@@ -9,7 +9,8 @@
 * **TASKS.md**: Actionable roadmap broken into phases.
 * **HARNESS.md**: Approved commands, dependencies, and QA protocol.
 * **PROGRESS.md**: Current status + recent sessions (archive in `PROGRESS_ARCHIVE.md`).
-* **WORKFLOW.md**: Task lifecycle, commit protocols, and skills index.
+* **WORKFLOW.md**: Task lifecycle and commit protocols.
+* **skills/**: Directory containing modular, executable AI skill protocols (e.g., `atomic_commit`, `e2e_smoke_test`).
 * **UML/**: PlantUML diagrams (`use_case.puml`, `class.puml`) — academic deliverables in Portuguese, not code references.
 
 ## 1. Architect and Backend Agent (Senior)
