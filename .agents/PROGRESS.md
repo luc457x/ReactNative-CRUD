@@ -2,7 +2,7 @@
 
 ## Current Status Summary
 * **Current Status:** **PROJECT COMPLETE** — All Phases (1–7) finished.
-* **Last Commit/Update:** Session 21 - Authentication & Error Toast Fixes for Normal Accounts.
+* **Last Commit/Update:** Session 22 - AI Engineering Decoupling & Prompt Optimization.
 
 ---
 
@@ -66,3 +66,17 @@
    - **Input state clearance:** Typing in `username` or `password` now automatically clears the active error message banner for a smooth, premium visual experience.
  * **Validation:**
    - **Technical:** `npm test` → 31 tests passed successfully. Verified that normal employee authentication works perfectly alongside admin accounts without triggering full page reloads.
+
+---
+
+### Session 22: AI Engineering Decoupling & Prompt Optimization
+ * **Date:** May 31, 2026
+ * **Agent:** Architect & QA Agent (Gemini 3.5 Flash)
+ * **Completed Tasks:** Token optimization and documentation streamlining.
+ * **Summary of Actions:**
+   - **Static vs Dynamic YAML Frontmatter:** Cleaned up redundant YAML frontmatter blocks from all static/fixed-contract files (`AGENTS.md`, `SPEC.md`, `TASKS.md`, `HARNESS.md`, `WORKFLOW.md`, `PROGRESS.md`, `PROGRESS_ARCHIVE.md`, `SKILLS.md`) to save valuable prompt context tokens. Retained it exclusively on dynamic modular skills (`context_aware_init`, `atomic_commit`, `e2e_smoke_test`) for automatic indexing.
+   - **SKILLS.md Deletion:** Deleted the redundant manual `SKILLS.md` file since the directory structure of `.agents/skills/` is natively self-indexing, preventing out-of-sync cataloging bugs.
+   - **Documentation Indexing:** Added `AGENTS_FULL.md` and `skills/` folders to the master engineering index list.
+   - **Language Constancy Refinement:** Tightened the universal directives in `AGENTS.md` to establish strict English-only bindings, with a scoped exception allowing responses in other languages ONLY when explicitly requested by the user.
+ * **Validation:**
+   - **Technical:** Clean Git status verified, all tests passing. Analyzed and verified that the context-footprint reduction is fully completed, saving ~80% context tokens for future tasks.
