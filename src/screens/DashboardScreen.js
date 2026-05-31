@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useCallback } from 'react';
+import React, { useState, useEffect, useContext, useCallback, useRef } from 'react';
 import {
   StyleSheet,
   Text,
@@ -12,10 +12,18 @@ import { StatusBar } from 'expo-status-bar';
 import { AuthContext } from '../../App';
 import { ProductRepository } from '../database/ProductRepository';
 
-export default function DashboardScreen({ navigation }) {
+export default function DashboardScreen({ navigation, route }) {
   const [products, setProducts] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
+  const [toast, setToast] = useState(null);
+  const toastTimer = useRef(null);
   const { user, setUser } = useContext(AuthContext);
+
+  const showToast = useCallback((message) => {
+    setToast(message);
+    if (toastTimer.current) clearTimeout(toastTimer.current);
+    toastTimer.current = setTimeout(() => setToast(null), 2500);
+  }, []);
 
   const loadProducts = useCallback(async () => {
     try {
@@ -33,9 +41,28 @@ export default function DashboardScreen({ navigation }) {
     }
 
     loadProducts();
-    const unsubscribe = navigation.addListener('focus', loadProducts);
+
+    // Reload list and show toast whenever Dashboard gets focus (i.e. after going back)
+    const unsubscribe = navigation.addListener('focus', () => {
+      loadProducts();
+      // Read success message passed via navigation params
+      const msg = navigation.getState?.()?.routes?.find?.(r => r.name === 'Dashboard')?.params?.successMessage;
+      if (msg) {
+        showToast(msg);
+        // Clear the param so it doesn't re-show on next focus
+        navigation.setParams({ successMessage: undefined });
+      }
+    });
     return unsubscribe;
-  }, [loadProducts, navigation, user]);
+  }, [loadProducts, navigation, user, showToast]);
+
+  // Also react to route.params.successMessage changes (from navigate with params)
+  useEffect(() => {
+    if (route?.params?.successMessage) {
+      showToast(route.params.successMessage);
+      navigation.setParams({ successMessage: undefined });
+    }
+  }, [route?.params?.successMessage]);
 
   const onRefresh = async () => {
     setRefreshing(true);
@@ -47,7 +74,6 @@ export default function DashboardScreen({ navigation }) {
     setUser(null);
     navigation.replace('Login');
   };
-
 
   const renderProduct = ({ item }) => (
     <TouchableOpacity 
@@ -90,6 +116,14 @@ export default function DashboardScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar style="light" />
+
+      {/* Toast notification */}
+      {toast && (
+        <View style={styles.toast}>
+          <Text style={styles.toastText}>✓ {toast}</Text>
+        </View>
+      )}
+
       <View style={styles.header}>
         <View>
           <Text style={styles.title}>Dashboard</Text>
@@ -139,6 +173,28 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#0f172a',
+  },
+  toast: {
+    position: 'absolute',
+    top: 60,
+    left: 24,
+    right: 24,
+    zIndex: 999,
+    backgroundColor: '#16a34a',
+    paddingVertical: 14,
+    paddingHorizontal: 20,
+    borderRadius: 12,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 8,
+  },
+  toastText: {
+    color: '#ffffff',
+    fontWeight: 'bold',
+    fontSize: 15,
   },
   header: {
     flexDirection: 'row',
@@ -236,10 +292,11 @@ const styles = StyleSheet.create({
     marginTop: 8,
     fontWeight: '600',
   },
-  totalQty: {
+  entryCount: {
     fontSize: 12,
-    color: '#94a3b8',
+    color: '#64748b',
     marginTop: 4,
+    fontStyle: 'italic',
   },
   quantityContainer: {
     alignItems: 'center',
@@ -266,12 +323,6 @@ const styles = StyleSheet.create({
   quantityUnit: {
     fontSize: 11,
     color: '#64748b',
-  },
-  entryCount: {
-    fontSize: 12,
-    color: '#64748b',
-    marginTop: 4,
-    fontStyle: 'italic',
   },
   emptyContainer: {
     flex: 1,

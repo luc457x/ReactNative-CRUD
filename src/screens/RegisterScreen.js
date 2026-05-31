@@ -53,16 +53,16 @@ export default function RegisterScreen({ navigation }) {
         return;
       }
 
-       await UserRepository.create(username, password, permission);
-       Alert.alert('Sucesso', 'Novo usuário cadastrado!', [
-         { text: 'OK', onPress: () => navigation.goBack() }
-       ]);
+      await UserRepository.create(username, password, permission);
+      // Navigate back immediately — no need to wait for Alert callback
+      navigation.navigate('Dashboard', { successMessage: 'Usuário cadastrado com sucesso!' });
     } catch (error) {
       Alert.alert('Erro', 'Ocorreu um erro ao tentar cadastrar o usuário.');
     } finally {
       setLoading(false);
     }
   };
+
 
   return (
     <SafeAreaView style={styles.container}>
@@ -181,6 +181,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingTop: 40,
     paddingBottom: 24,
+    width: '100%',
+    maxWidth: 600,
+    alignSelf: 'center',
   },
   header: {
     alignItems: 'center',

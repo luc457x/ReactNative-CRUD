@@ -15,27 +15,47 @@ import { StatusBar } from 'expo-status-bar';
 import { ProductRepository } from '../database/ProductRepository';
 import { AuthContext } from '../../App';
 
-export default function ProductFormScreen({ navigation }) {
+export default function ProductFormScreen({ route, navigation }) {
+  const productToEdit = route?.params?.product;
+  const isEditing = !!productToEdit;
+
   const [name, setName] = useState('');
   const [category, setCategory] = useState('');
   const [quantity, setQuantity] = useState('');
   const [unitPrice, setUnitPrice] = useState('');
   const [expirationDate, setExpirationDate] = useState('');
   const [loading, setLoading] = useState(false);
+  // Toast feedback state
+  const [toast, setToast] = useState(null);
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
     if (!user) {
       navigation.replace('Login');
+      return;
     }
-  }, [user, navigation]);
+
+    if (productToEdit) {
+      setName(productToEdit.name || '');
+      setCategory(productToEdit.category || '');
+      setQuantity(productToEdit.quantity?.toString() || '0');
+      setUnitPrice(productToEdit.unitPrice?.toString() || '0.00');
+      setExpirationDate(productToEdit.expirationDate || '');
+    }
+  }, [user, navigation, productToEdit]);
 
   if (!user) {
     return null;
   }
 
+  const showToast = (message, type = 'success') => {
+    setToast({ message, type });
+    setTimeout(() => setToast(null), 2000);
+  };
+
   const handleSave = async () => {
     if (!name || !quantity || !unitPrice) {
+      // Keep Alert for validation errors — these are synchronous and fine
       Alert.alert('Erro', 'Preencha os campos obrigatórios: Nome, Quantidade e Preço.');
       return;
     }
@@ -45,12 +65,17 @@ export default function ProductFormScreen({ navigation }) {
       const qty = parseInt(quantity, 10) || 0;
       const price = parseFloat(unitPrice) || 0;
 
-       await ProductRepository.create(name, category, qty, price, expirationDate);
-       Alert.alert('Sucesso', 'Novo item cadastrado!', [
-         { text: 'OK', onPress: () => navigation.goBack() }
-       ]);
+      if (isEditing) {
+        await ProductRepository.update(productToEdit.id, name, category, qty, price, expirationDate);
+        // When editing, go back to ProductDetailScreen
+        navigation.goBack();
+      } else {
+        await ProductRepository.create(name, category, qty, price, expirationDate);
+        // When creating, go to Dashboard and show success toast
+        navigation.navigate('Dashboard', { successMessage: 'Produto cadastrado com sucesso!' });
+      }
     } catch (error) {
-      Alert.alert('Erro', 'Não foi possível cadastrar o produto.');
+      Alert.alert('Erro', isEditing ? 'Não foi possível atualizar o produto.' : 'Não foi possível cadastrar o produto.');
     } finally {
       setLoading(false);
     }
@@ -59,6 +84,14 @@ export default function ProductFormScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar style="light" />
+
+      {/* Toast notification */}
+      {toast && (
+        <View style={[styles.toast, toast.type === 'error' ? styles.toastError : styles.toastSuccess]}>
+          <Text style={styles.toastText}>{toast.message}</Text>
+        </View>
+      )}
+
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.flex}
@@ -71,8 +104,8 @@ export default function ProductFormScreen({ navigation }) {
             >
               <Text style={styles.backButtonText}>← Voltar</Text>
             </TouchableOpacity>
-            <Text style={styles.title}>Novo Produto</Text>
-            <Text style={styles.subtitle}>Cadastre um item no estoque</Text>
+            <Text style={styles.title}>{isEditing ? 'Editar Produto' : 'Novo Produto'}</Text>
+            <Text style={styles.subtitle}>{isEditing ? 'Altere os dados do item' : 'Cadastre um item no estoque'}</Text>
           </View>
 
           <View style={styles.form}>
@@ -141,7 +174,7 @@ export default function ProductFormScreen({ navigation }) {
               disabled={loading}
             >
               <Text style={styles.buttonText}>
-                {loading ? 'Salvando...' : 'Salvar Produto'}
+                {loading ? 'Salvando...' : (isEditing ? 'Salvar Alterações' : 'Salvar Produto')}
               </Text>
             </TouchableOpacity>
           </View>
@@ -159,14 +192,40 @@ const styles = StyleSheet.create({
   flex: {
     flex: 1,
   },
+  toast: {
+    position: 'absolute',
+    top: 60,
+    left: 24,
+    right: 24,
+    zIndex: 999,
+    paddingVertical: 14,
+    paddingHorizontal: 20,
+    borderRadius: 12,
+    alignItems: 'center',
+  },
+  toastSuccess: {
+    backgroundColor: '#16a34a',
+  },
+  toastError: {
+    backgroundColor: '#dc2626',
+  },
+  toastText: {
+    color: '#ffffff',
+    fontWeight: 'bold',
+    fontSize: 15,
+  },
   scrollContent: {
     paddingHorizontal: 24,
     paddingTop: 40,
     paddingBottom: 24,
+    maxWidth: 600,
+    width: '100%',
+    alignSelf: 'center',
   },
   header: {
     alignItems: 'center',
     marginBottom: 32,
+    width: '100%',
   },
   backButton: {
     alignSelf: 'flex-start',
