@@ -41,3 +41,13 @@ description: Granular roadmap divided into phases and actionable tasks for proje
 - [ ] **T6.1:** Refine style to ensure responsiveness (phones and tablets).
 - [ ] **T6.2:** Offline flow and persistence tests.
 - [ ] **T6.3:** Final cross-validation with `SPEC.md` and `UML/use_case.puml`.
+- [ ] **T6.4:** Fix delete button functionality.
+- [ ] **T6.5:** Implement success/error messages after adding items/users.
+- [ ] **T6.6:** Add automatic screen refresh/reload after data modifications.
+
+
+## Phase 7: Homologation
+- [ ] **T7.1:** Execute end-to-end (E2E) smoke testing of the complete user flows (Login, user registration, product CRUD, and quantity adjustments).
+- [ ] **T7.2:** Perform cross-platform visual validation (Layout integrity and responsiveness on both Phone and Tablet viewports).
+- [ ] **T7.3:** Verify database state preservation and seed constraints under standard offline scenarios.
+- [ ] **T7.4:** Perform final regression tests, clean debug codes (logs, test components), and run the production build verification.
