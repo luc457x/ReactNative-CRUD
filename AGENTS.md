@@ -1,8 +1,3 @@
----
-name: agents_config
-description: Universal AI directives. Full roles and doc index in .agents/AGENTS_FULL.md.
----
-
 # AI Directives (AGENTS.md)
 
 ## Universal Rules (Mandatory)
