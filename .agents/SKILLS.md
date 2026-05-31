@@ -1,11 +1,6 @@
----
-name: skills_index
-description: Registry of modular skills.
----
-
 # AI Skills Index (SKILLS.md)
 
-Modular protocols are located in `docs/skills/<skill_name>/SKILL.md`.
+Modular protocols are located in `.agents/skills/<skill_name>/SKILL.md`.
 
 ## List of Available Skills:
 

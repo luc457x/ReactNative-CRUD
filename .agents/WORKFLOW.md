@@ -1,8 +1,3 @@
----
-name: agent_workflow
-description: Mandatory protocols for communication, task completion, and conflict management.
----
-
 # Workflow Guideline (WORKFLOW.md)
 
 ## 1. Task Initialization

@@ -1,8 +1,3 @@
----
-name: tasks_roadmap
-description: Granular roadmap divided into phases and actionable tasks for project development.
----
-
 # Task Plan (TASKS.md)
 
 ## Phase 1: Project Setup and Infrastructure

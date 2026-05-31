@@ -1,8 +1,3 @@
----
-name: progress_log
-description: Historical log of sessions, completed tasks, and current project status.
----
-
 # Progress Log (PROGRESS.md)
 
 ## Current Status Summary

@@ -1,8 +1,3 @@
----
-name: progress_history
-description: Historical archive of older development sessions.
----
-
 # Progress Log History (PROGRESS_HISTORY.md)
 
 ## Session Log

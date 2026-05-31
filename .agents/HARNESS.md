@@ -1,8 +1,3 @@
----
-name: technical_harness
-description: Technical acceptance criteria, approved commands, and code quality/cleanliness standards.
----
-
 # Technical Harness (HARNESS.md)
 
 ## 1. Fundamental Rule

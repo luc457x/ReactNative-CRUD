@@ -1,8 +1,3 @@
----
-name: project_spec
-description: Technical and business specification, including functional requirements, non-functional requirements, and business rules.
----
-
 # Project Specification (SPEC.md)
 
 ## Project Goals
