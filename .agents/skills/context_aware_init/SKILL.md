@@ -1,6 +1,6 @@
 ---
 name: context_aware_init
-description: Stack-aware repository and ignore initialization protocol.
+description: Stack-aware repository initialization protocol.
 ---
 
 # Context-Aware Initialization Skill

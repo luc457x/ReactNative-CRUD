@@ -13,18 +13,12 @@ Verify that the "Happy Path" is functional using the most appropriate tool for t
 
 ## Step by step
 
-### 1. Select Testing Mode
-Identify the platform and the corresponding verification tool (see `examples/SMOKE_EXAMPLES.md`).
+1. **Select mode** based on platform:
+   - **Web/Hybrid:** Use browser subagent → "Navigate to URL. Perform [Action]. Verify [Result]."
+   - **API:** `npx jest` or `curl -X GET http://localhost:PORT/api/health`
+   - **Native:** `npx detox test` or equivalent test runner.
+2. **Ensure** the app/service is running and testable.
+3. **Execute** verification and check for errors, timeouts, or logic violations.
+4. **Compare** output against `SPEC.md` requirements.
+5. **Document** result: "Smoke Test Passed ([Mode])" in the task validation.
 
-### 2. Prepare Environment
-Ensure the application or service is running and in a testable state.
-
-### 3. Execution & Verification
-Execute the verification using the selected tool (Browser subagent or Terminal commands).
-
-### 4. Analyze Results
-- Check for errors, timeouts, or logic violations.
-- Compare the actual output with the requirements in `SPEC.md`.
-
-### 5. Documentation
-If the flow is confirmed, document **"Smoke Test Passed ([Mode Used])"** in the task validation.
