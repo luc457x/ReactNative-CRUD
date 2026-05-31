@@ -2,8 +2,9 @@
 
 ## Documentation Structure
 
-> **Location:** All AI engineering documents are centralized in **`/.agents`**. `AGENTS.md` (root) contains only the universal directives, while `AGENTS_FULL.md` (this file, located at `/.agents/AGENTS_FULL.md`) serves as the comprehensive configuration defining detailed AI agent personas, responsibilities, and the master project documentation index.
+> **Location:** All AI engineering documents are centralized in **`/.agents`**. `AGENTS.md` (root) contains only the universal directives.
 
+* **AGENTS_FULL.md** (this file, located at `/.agents/AGENTS_FULL.md`): Full index of engineering documentation, detailed AI roles, and persona configurations.
 * **SPEC.md**: Business rules, FRs, NFRs, and links to UML diagrams.
 * **TASKS.md**: Actionable roadmap broken into phases.
 * **HARNESS.md**: Approved commands, dependencies, and QA protocol.
