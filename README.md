@@ -1,8 +1,8 @@
 # Sistema de Controle de Estoque React Native
 
-Este é um projeto acadêmico para estudar fundamentos de engenharia de IA - um sistema de controle de estoque digital construído com React Native, JavaScript e banco de dados SQLite.
+Este é um projeto acadêmico para estudar fundamentos de engenharia de IA e software - um sistema de controle de estoque digital construído com React Native, JavaScript e banco de dados SQLite.
 
-## O que é
+## O que é?
 Uma aplicação móvel multiplataforma para gerenciamento de estoque com autenticação de usuário, registro de produtos com operações CRUD, controle de quantidade de estoque e persistência de dados usando banco de dados SQLite local.
 
 ## Como Executar
