@@ -1,18 +1,17 @@
 # Sistema de Controle de Estoque React Native
 
-Este é um projeto acadêmico para estudar fundamentos de engenharia de IA - um sistema de controle de estoque digital construído com React Native, JavaScript e banco de dados SQLite.
+Este é um projeto acadêmico para estudar fundamentos de engenharia de IA e software - um sistema de controle de estoque digital construído com React Native, JavaScript e banco de dados SQLite.
 
-## O que é
+## O que é?
 Uma aplicação móvel multiplataforma para gerenciamento de estoque com autenticação de usuário, registro de produtos com operações CRUD, controle de quantidade de estoque e persistência de dados usando banco de dados SQLite local.
 
-## Como Executar
+## Como Executar?
 1. Instale as dependências: `npm install`
 2. Inicie o servidor de desenvolvimento: `npm start`
 3. Escolha sua plataforma:
     - Pressione 'w' para navegador web
     - Pressione 'a' para emulador Android
     - Pressione 'i' para simulador iOS
-    - Use o aplicativo Expo Go em dispositivo físico (escaneie o código QR)
 
 ## Recursos Atuais
 - **Autenticação Segura:** Fluxo completo de login/logout de usuários, suportando perfis de Administrador (seed padrão: `admin/admin`) e Funcionário. A interface possui um banner de erro inline moderno e limpo na tela de Login.
