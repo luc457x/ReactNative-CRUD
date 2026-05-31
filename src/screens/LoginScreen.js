@@ -18,11 +18,13 @@ export default function LoginScreen({ navigation }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState(null);
   const { setUser } = useContext(AuthContext);
 
   const handleLogin = async () => {
+    setErrorMsg(null);
     if (!username || !password) {
-      Alert.alert('Erro', 'Por favor, preencha todos os campos.');
+      setErrorMsg('Por favor, preencha todos os campos.');
       return;
     }
 
@@ -34,10 +36,10 @@ export default function LoginScreen({ navigation }) {
         setUser(user);
         navigation.replace('Dashboard');
       } else {
-        Alert.alert('Falha na Autenticação', 'Usuário ou senha incorretos.');
+        setErrorMsg('Usuário ou senha incorretos.');
       }
     } catch (error) {
-      Alert.alert('Erro', 'Ocorreu um erro ao tentar fazer login.');
+      setErrorMsg('Ocorreu um erro ao tentar fazer login.');
     } finally {
       setLoading(false);
     }
@@ -59,6 +61,12 @@ export default function LoginScreen({ navigation }) {
         </View>
 
         <View style={styles.form}>
+          {errorMsg && (
+            <View style={styles.errorBanner}>
+              <Text style={styles.errorText}>⚠️ {errorMsg}</Text>
+            </View>
+          )}
+
           <View style={styles.inputContainer}>
             <Text style={styles.label}>Usuário</Text>
             <TextInput
@@ -66,7 +74,10 @@ export default function LoginScreen({ navigation }) {
               placeholder="Digite seu usuário"
               placeholderTextColor="#64748b"
               value={username}
-              onChangeText={setUsername}
+              onChangeText={(text) => {
+                setUsername(text);
+                setErrorMsg(null);
+              }}
               autoCapitalize="none"
             />
           </View>
@@ -78,10 +89,13 @@ export default function LoginScreen({ navigation }) {
               placeholder="Digite sua senha"
               placeholderTextColor="#64748b"
               value={password}
-              onChangeText={setPassword}
+              onChangeText={(text) => {
+                setPassword(text);
+                setErrorMsg(null);
+              }}
               secureTextEntry
             />
-</View>
+          </View>
 
           <TouchableOpacity
             style={[styles.button, loading && styles.buttonDisabled]}
@@ -110,6 +124,9 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 24,
     justifyContent: 'center',
+    width: '100%',
+    maxWidth: 500,
+    alignSelf: 'center',
   },
   header: {
     alignItems: 'center',
@@ -194,6 +211,22 @@ const styles = StyleSheet.create({
   registerLinkBold: {
     color: '#3b82f6',
     fontWeight: 'bold',
+  },
+  errorBanner: {
+    backgroundColor: 'rgba(239, 68, 68, 0.15)',
+    borderColor: '#ef4444',
+    borderWidth: 1,
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    borderRadius: 12,
+    marginBottom: 20,
+    width: '100%',
+  },
+  errorText: {
+    color: '#f87171',
+    fontSize: 14,
+    fontWeight: '600',
+    textAlign: 'center',
   },
   footer: {
     position: 'absolute',
