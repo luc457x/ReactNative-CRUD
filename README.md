@@ -12,7 +12,6 @@ Uma aplicação móvel multiplataforma para gerenciamento de estoque com autenti
     - Pressione 'w' para navegador web
     - Pressione 'a' para emulador Android
     - Pressione 'i' para simulador iOS
-    - Use o aplicativo Expo Go em dispositivo físico (escaneie o código QR)
 
 ## Recursos Atuais
 - Sistema de login/logout de usuários (usuário admin seedado: admin/admin)
