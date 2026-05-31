@@ -1,4 +1,5 @@
 ---
+---
 name: progress_log
 description: Historical log of sessions, completed tasks, and current project status.
 ---
@@ -6,8 +7,8 @@ description: Historical log of sessions, completed tasks, and current project st
 # Progress Log (PROGRESS.md)
 
 ## Current Status Summary
-* **Current Status:** **Phase 6 - Final Adjustments & UX** (T6.1 to T6.6, Phase 7 remaining)
-* **Last Commit/Update:** Backlog Integration & Homologation Setup - Updated TASKS.md and PROGRESS.md.
+* **Current Status:** **Phase 6 - Final Adjustments, Testing, & UX** (T6.1 to T6.9, Phase 7 remaining)
+* **Last Commit/Update:** Testing Roadmap Integration - Configured unit & integration testing tasks in TASKS.md and PROGRESS.md.
 
 ---
 
@@ -316,4 +317,28 @@ description: Historical log of sessions, completed tasks, and current project st
    - T6.4 - Fix delete button functionality.
    - T6.5 - Implement success/error messages after adding items/users.
    - T6.6 - Add automatic screen refresh/reload after data modifications.
+   - Phase 7 Homologation tasks (T7.1 - T7.4).
+
+---
+
+### Session 18: Testing Roadmap Integration
+ * **Date:** May 31, 2026
+ * **Agent:** QA / Architect Agent
+ * **Completed Tasks:** Added unit and integration testing tasks to Phase 6 in TASKS.md.
+ * **Summary of Actions:**
+   - Designed and incorporated testing tasks (`T6.7`, `T6.8`, `T6.9`) into Phase 6 to guarantee application reliability.
+   - Defined requirements for configuring Jest, writing unit tests for repositories, and building integration tests for authentication and stock adjustment flows.
+   - Updated the current status in `PROGRESS.md`.
+ * **Validation:**
+   - **Technical:** Roadmap documents conform to the agent standard structure and nomenclature. Verified that the document parses correctly.
+ * **Pending Items:**
+   - T6.1 - Refine style to ensure responsiveness (phones and tablets).
+   - T6.2 - Offline flow and persistence tests.
+   - T6.3 - Final cross-validation with `SPEC.md` and `UML/use_case.puml`.
+   - T6.4 - Fix delete button functionality.
+   - T6.5 - Implement success/error messages after adding items/users.
+   - T6.6 - Add automatic screen refresh/reload after data modifications.
+   - T6.7 - Configure Jest testing environment with `jest-expo` and React Native Testing Library.
+   - T6.8 - Implement unit tests for SQLite repositories.
+   - T6.9 - Implement component integration tests.
    - Phase 7 Homologation tasks (T7.1 - T7.4).
