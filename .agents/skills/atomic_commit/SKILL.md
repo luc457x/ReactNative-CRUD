@@ -1,3 +1,8 @@
+---
+name: atomic_commit
+description: Atomic git commit protocol with priority ordering.
+---
+
 # Atomic Commit Skill
 
 ## When to use

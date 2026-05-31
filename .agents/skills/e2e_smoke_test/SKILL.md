@@ -1,3 +1,8 @@
+---
+name: e2e_smoke_test
+description: End-to-end verification and happy path validation protocol.
+---
+
 # Universal E2E Smoke Test Skill
 
 ## When to use
