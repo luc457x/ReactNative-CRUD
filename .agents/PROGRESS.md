@@ -384,8 +384,9 @@ description: Historical log of sessions, completed tasks, and current project st
  * **Validation:**
    - **Technical:** `npm test` → 31 tests passed, 0 failures (confirmed by user). All flows manually verified on Expo Web.
    - **Business:** FR02 (delete), FR02 (update), FR05 (register) fully functional end-to-end with correct user feedback.
-  * **Pending Items:**
-    - None.
+  * **Pending Items (Backlog):**
+    - [ ] **B1.1:** Strictly handle and validate input data types (prevent negative numbers, format strings, sanitize fields on both user and product form inputs).
+    - [ ] **B1.2:** Implement user account management screen for administrators to view, edit permissions/usernames, and delete registered user accounts (User CRUD).
 
 ---
 

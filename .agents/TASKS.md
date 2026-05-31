@@ -54,3 +54,7 @@ description: Granular roadmap divided into phases and actionable tasks for proje
 - [x] **T7.2:** Perform cross-platform visual validation (Layout integrity and responsiveness on both Phone and Tablet viewports).
 - [x] **T7.3:** Verify database state preservation and seed constraints under standard offline scenarios.
 - [x] **T7.4:** Perform final regression tests, clean debug codes (logs, test components), and run the production build verification.
+
+## Future Backlog (Roadmap)
+- [ ] **B1.1:** Implement strict input data validation & sanitization (handling of data types on user/product forms, preventing invalid inputs, negative price, special character injections, etc.).
+- [ ] **B1.2:** Implement user account management screen for administrators (Admin Dashboard to view all registered accounts, edit permissions/names, and delete accounts).
