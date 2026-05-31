@@ -5,7 +5,7 @@ Este é um projeto acadêmico para estudar fundamentos de engenharia de IA e sof
 ## O que é?
 Uma aplicação móvel multiplataforma para gerenciamento de estoque com autenticação de usuário, registro de produtos com operações CRUD, controle de quantidade de estoque e persistência de dados usando banco de dados SQLite local.
 
-## Como Executar
+## Como Executar?
 1. Instale as dependências: `npm install`
 2. Inicie o servidor de desenvolvimento: `npm start`
 3. Escolha sua plataforma:
