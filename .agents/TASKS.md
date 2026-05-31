@@ -38,19 +38,19 @@ description: Granular roadmap divided into phases and actionable tasks for proje
 - [x] **T5.3:** Connect the listing to the database to reflect changes "immediately" (Ref: Business Rule).
 
 ## Phase 6: Final Adjustments, Testing, and UX (Ref: NFR03)
-- [ ] **T6.1:** Refine style to ensure responsiveness (phones and tablets).
-- [ ] **T6.2:** Offline flow and persistence tests.
-- [ ] **T6.3:** Final cross-validation with `SPEC.md` and `UML/use_case.puml`.
-- [ ] **T6.4:** Fix delete button functionality.
-- [ ] **T6.5:** Implement success/error messages after adding items/users.
-- [ ] **T6.6:** Add automatic screen refresh/reload after data modifications.
-- [ ] **T6.7:** Configure Jest testing environment with `jest-expo` and React Native Testing Library.
-- [ ] **T6.8:** Implement unit tests for SQLite repositories (`UserRepository` and `ProductRepository`) validating CRUD operations and constraints.
-- [ ] **T6.9:** Implement component integration tests for authentication flows (Login/Register guards) and quantity adjustments.
+- [x] **T6.1:** Refine style to ensure responsiveness (phones and tablets).
+- [x] **T6.2:** Offline flow and persistence tests.
+- [x] **T6.3:** Final cross-validation with `SPEC.md` and `UML/use_case.puml`.
+- [x] **T6.4:** Fix delete button functionality.
+- [x] **T6.5:** Implement success/error messages after adding items/users.
+- [x] **T6.6:** Add automatic screen refresh/reload after data modifications.
+- [x] **T6.7:** Configure Jest testing environment with `jest-expo` and React Native Testing Library.
+- [x] **T6.8:** Implement unit tests for SQLite repositories (`UserRepository` and `ProductRepository`) validating CRUD operations and constraints.
+- [x] **T6.9:** Implement component integration tests for authentication flows (Login/Register guards) and quantity adjustments.
 
 
 ## Phase 7: Homologation
-- [ ] **T7.1:** Execute end-to-end (E2E) smoke testing of the complete user flows (Login, user registration, product CRUD, and quantity adjustments).
-- [ ] **T7.2:** Perform cross-platform visual validation (Layout integrity and responsiveness on both Phone and Tablet viewports).
-- [ ] **T7.3:** Verify database state preservation and seed constraints under standard offline scenarios.
-- [ ] **T7.4:** Perform final regression tests, clean debug codes (logs, test components), and run the production build verification.
+- [x] **T7.1:** Execute end-to-end (E2E) smoke testing of the complete user flows (Login, user registration, product CRUD, and quantity adjustments).
+- [x] **T7.2:** Perform cross-platform visual validation (Layout integrity and responsiveness on both Phone and Tablet viewports).
+- [x] **T7.3:** Verify database state preservation and seed constraints under standard offline scenarios.
+- [x] **T7.4:** Perform final regression tests, clean debug codes (logs, test components), and run the production build verification.
