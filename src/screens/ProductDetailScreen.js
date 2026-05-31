@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext, useCallback } from 'react';
 import {
   StyleSheet,
   Text,
@@ -18,31 +18,36 @@ export default function ProductDetailScreen({ route, navigation }) {
   const [refreshing, setRefreshing] = useState(false);
   const { user } = useContext(AuthContext);
 
-  useEffect(() => {
-    if (!user) {
-      navigation.replace('Login');
-      return;
-    }
-
-    loadProductEntries();
-  }, [productName, category, user, navigation]);
-
-  const loadProductEntries = async () => {
+  const loadProductEntries = useCallback(async () => {
     setRefreshing(true);
     try {
       const entries = await ProductRepository.getByNameAndCategory(productName, category);
-      setProductEntries(entries);
+      if (entries.length === 0) {
+        navigation.goBack();
+      } else {
+        setProductEntries(entries);
+      }
     } catch (error) {
       console.error('Error loading product entries:', error);
     } finally {
       setRefreshing(false);
     }
-  };
+  }, [productName, category, navigation]);
+
+  useEffect(() => {
+    if (!user) {
+      navigation.replace('Login');
+      return;
+    }
+    loadProductEntries();
+    const unsubscribe = navigation.addListener('focus', loadProductEntries);
+    return unsubscribe;
+  }, [loadProductEntries, navigation, user]);
 
   const handleDelete = async (id) => {
     Alert.alert(
       'Confirmar Exclusão',
-      'Deseja realmente excluir este produto?',
+      'Deseja realmente excluir este lote?',
       [
         { text: 'Cancelar', style: 'cancel' },
         { 
@@ -51,7 +56,7 @@ export default function ProductDetailScreen({ route, navigation }) {
           onPress: async () => {
             try {
               await ProductRepository.delete(id);
-              loadProductEntries();
+              await loadProductEntries();
             } catch (error) {
               Alert.alert('Erro', 'Não foi possível excluir o produto.');
             }
@@ -61,29 +66,65 @@ export default function ProductDetailScreen({ route, navigation }) {
     );
   };
 
+  const handleIncrement = async (id) => {
+    try {
+      await ProductRepository.incrementQuantity(id);
+      await loadProductEntries();
+    } catch (error) {
+      Alert.alert('Erro', 'Não foi possível incrementar a quantidade.');
+    }
+  };
+
+  const handleDecrement = async (id) => {
+    try {
+      await ProductRepository.decrementQuantity(id);
+      await loadProductEntries();
+    } catch (error) {
+      Alert.alert('Erro', 'Não foi possível decrementar a quantidade.');
+    }
+  };
+
   const renderEntry = ({ item }) => (
     <View style={styles.entryCard}>
       <View style={styles.entryInfo}>
-        <Text style={styles.entryLabel}>ID: {item.id}</Text>
-        {item.expirationDate && (
+        <Text style={styles.entryLabel}>Lote #{item.id}</Text>
+        {item.expirationDate ? (
           <Text style={styles.entryLabel}>Validade: {item.expirationDate}</Text>
+        ) : (
+          <Text style={[styles.entryLabel, styles.entryLabelMuted]}>Sem validade</Text>
         )}
-        <Text style={styles.entryLabel}>Preço: R$ {item.unitPrice?.toFixed(2)}</Text>
-        <Text style={styles.entryQty}>Qtd: {item.quantity}</Text>
+        <Text style={styles.entryLabel}>Preço: R$ {(item.unitPrice ?? 0).toFixed(2)}</Text>
       </View>
-      <View style={styles.entryActions}>
-        <TouchableOpacity
-          style={styles.editButton}
-          onPress={() => navigation.navigate('ProductForm', { product: item })}
-        >
-          <Text style={styles.editButtonText}>✏️</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.deleteButton}
-          onPress={() => handleDelete(item.id)}
-        >
-          <Text style={styles.deleteButtonText}>🗑️</Text>
-        </TouchableOpacity>
+      <View style={styles.entryRight}>
+        <View style={styles.qtyRow}>
+          <TouchableOpacity
+            style={styles.qtyButton}
+            onPress={() => handleDecrement(item.id)}
+          >
+            <Text style={styles.qtyButtonText}>-</Text>
+          </TouchableOpacity>
+          <Text style={styles.entryQty}>{item.quantity}</Text>
+          <TouchableOpacity
+            style={[styles.qtyButton, styles.qtyButtonPlus]}
+            onPress={() => handleIncrement(item.id)}
+          >
+            <Text style={styles.qtyButtonText}>+</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.entryActions}>
+          <TouchableOpacity
+            style={styles.editButton}
+            onPress={() => navigation.navigate('ProductForm', { product: item })}
+          >
+            <Text style={styles.editButtonText}>✏️</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.deleteButton}
+            onPress={() => handleDelete(item.id)}
+          >
+            <Text style={styles.deleteButtonText}>🗑️</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
@@ -126,6 +167,9 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     borderBottomWidth: 1,
     borderBottomColor: '#1e293b',
+    width: '100%',
+    maxWidth: 800,
+    alignSelf: 'center',
   },
   backButton: {
     color: '#3b82f6',
@@ -147,6 +191,9 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 24,
     paddingTop: 16,
+    width: '100%',
+    maxWidth: 800,
+    alignSelf: 'center',
   },
   entryCard: {
     backgroundColor: '#1e293b',
@@ -155,6 +202,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
     borderWidth: 1,
     borderColor: '#334155',
   },
@@ -166,11 +214,41 @@ const styles = StyleSheet.create({
     color: '#cbd5e1',
     marginBottom: 4,
   },
+  entryLabelMuted: {
+    color: '#475569',
+    fontStyle: 'italic',
+  },
+  entryRight: {
+    alignItems: 'flex-end',
+    gap: 10,
+  },
+  qtyRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  qtyButton: {
+    backgroundColor: '#334155',
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  qtyButtonPlus: {
+    backgroundColor: '#1d4ed8',
+  },
+  qtyButtonText: {
+    fontSize: 18,
+    color: '#f8fafc',
+    fontWeight: 'bold',
+  },
   entryQty: {
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: 'bold',
     color: '#f8fafc',
-    marginTop: 8,
+    minWidth: 32,
+    textAlign: 'center',
   },
   entryActions: {
     flexDirection: 'row',
@@ -178,27 +256,27 @@ const styles = StyleSheet.create({
   },
   editButton: {
     backgroundColor: '#1e293b',
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    width: 36,
+    height: 36,
+    borderRadius: 18,
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 1,
     borderColor: '#334155',
   },
   editButtonText: {
-    fontSize: 18,
+    fontSize: 16,
   },
   deleteButton: {
     backgroundColor: '#dc2626',
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    width: 36,
+    height: 36,
+    borderRadius: 18,
     alignItems: 'center',
     justifyContent: 'center',
   },
   deleteButtonText: {
-    fontSize: 18,
+    fontSize: 16,
   },
   emptyText: {
     color: '#94a3b8',

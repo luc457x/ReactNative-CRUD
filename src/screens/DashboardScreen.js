@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
   FlatList,
   RefreshControl,
-  Alert,
   SafeAreaView,
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
@@ -49,23 +48,6 @@ export default function DashboardScreen({ navigation }) {
     navigation.replace('Login');
   };
 
-  const handleIncrement = async (id) => {
-    try {
-      await ProductRepository.incrementQuantity(id);
-      await loadProducts();
-    } catch (error) {
-      Alert.alert('Erro', 'Não foi possível incrementar a quantidade.');
-    }
-  };
-
-  const handleDecrement = async (id) => {
-    try {
-      await ProductRepository.decrementQuantity(id);
-      await loadProducts();
-    } catch (error) {
-      Alert.alert('Erro', 'Não foi possível decrementar a quantidade.');
-    }
-  };
 
   const renderProduct = ({ item }) => (
     <TouchableOpacity 
@@ -77,27 +59,14 @@ export default function DashboardScreen({ navigation }) {
     >
       <View style={styles.productInfo}>
         <Text style={styles.productName}>{item.name}</Text>
-        <Text style={styles.productCategory}>{item.category}</Text>
-        <Text style={styles.productPrice}>R$ {item.unitPrice?.toFixed(2)}</Text>
-        <Text style={styles.totalQty}>Total: {item.totalQuantity} unidades</Text>
+        <Text style={styles.productCategory}>{item.category || 'Sem categoria'}</Text>
+        <Text style={styles.productPrice}>R$ {(item.entries[0]?.unitPrice ?? 0).toFixed(2)}</Text>
+        <Text style={styles.entryCount}>{item.entries.length} {item.entries.length === 1 ? 'lote' : 'lotes'}</Text>
       </View>
       <View style={styles.quantityContainer}>
-        <Text style={styles.quantityLabel}>Qtd</Text>
-        <Text style={styles.quantityValue}>{item.quantity}</Text>
-        <View style={styles.buttonRow}>
-          <TouchableOpacity
-            style={styles.qtyButton}
-            onPress={() => handleDecrement(item.id)}
-          >
-            <Text style={styles.qtyButtonText}>-</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.qtyButton}
-            onPress={() => handleIncrement(item.id)}
-          >
-            <Text style={styles.qtyButtonText}>+</Text>
-          </TouchableOpacity>
-        </View>
+        <Text style={styles.quantityLabel}>Total</Text>
+        <Text style={styles.quantityValue}>{item.totalQuantity}</Text>
+        <Text style={styles.quantityUnit}>un.</Text>
       </View>
     </TouchableOpacity>
   );
@@ -179,6 +148,9 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     borderBottomWidth: 1,
     borderBottomColor: '#1e293b',
+    width: '100%',
+    maxWidth: 900,
+    alignSelf: 'center',
   },
   title: {
     fontSize: 28,
@@ -210,6 +182,9 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 24,
     paddingTop: 16,
+    width: '100%',
+    maxWidth: 900,
+    alignSelf: 'center',
   },
   sectionHeader: {
     flexDirection: 'row',
@@ -269,34 +244,34 @@ const styles = StyleSheet.create({
   quantityContainer: {
     alignItems: 'center',
     justifyContent: 'center',
+    minWidth: 70,
+    backgroundColor: '#0f172a',
+    borderRadius: 10,
+    padding: 10,
+    borderWidth: 1,
+    borderColor: '#334155',
   },
   quantityLabel: {
-    fontSize: 11,
-    color: '#94a3b8',
+    fontSize: 10,
+    color: '#64748b',
     textTransform: 'uppercase',
+    letterSpacing: 1,
   },
   quantityValue: {
-    fontSize: 20,
+    fontSize: 26,
     fontWeight: 'bold',
-    color: '#f8fafc',
-    marginVertical: 8,
+    color: '#38bdf8',
+    marginVertical: 2,
   },
-  buttonRow: {
-    flexDirection: 'row',
-    gap: 8,
+  quantityUnit: {
+    fontSize: 11,
+    color: '#64748b',
   },
-  qtyButton: {
-    backgroundColor: '#334155',
-    width: 32,
-    height: 32,
-    borderRadius: 16,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  qtyButtonText: {
-    fontSize: 18,
-    color: '#f8fafc',
-    fontWeight: 'bold',
+  entryCount: {
+    fontSize: 12,
+    color: '#64748b',
+    marginTop: 4,
+    fontStyle: 'italic',
   },
   emptyContainer: {
     flex: 1,
